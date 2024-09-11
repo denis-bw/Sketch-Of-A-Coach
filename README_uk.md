@@ -1,4 +1,4 @@
-# [en](./README.md) **uk**
+# [En](./README.md) **Uk**
 
 # Coaching Draft
 
