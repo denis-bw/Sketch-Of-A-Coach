@@ -4,5 +4,5 @@ import 'normalize.css';
 export const AppWrapper = styled.div`
   width: 100%;
   height: 100vh;
-  border-color: #121212;
+  border-color: #F4F4F4;
 `;

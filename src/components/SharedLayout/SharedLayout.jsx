@@ -1,15 +1,22 @@
-import { Suspense } from 'react';
+// components/SharedLayout.js
+import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header } from 'components/Header/Header';
+import { LayoutContainer, ContentContainer } from './SharedLayout.styled';
+import Header from '../Header/Header';
+import Sidebar from '../Sidebar/Sidebar';
+import MainContent from '../MainContent/MainContent';
 
 const SharedLayout = () => {
   return (
-    <>
-      <Header />
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
-    </>
+    <LayoutContainer>
+      <Sidebar />
+      <ContentContainer>
+        <Header />
+        <MainContent>
+          <Outlet />
+        </MainContent>
+      </ContentContainer>
+    </LayoutContainer>
   );
 };
 

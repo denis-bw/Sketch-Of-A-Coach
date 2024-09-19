@@ -1,26 +1,20 @@
-import {
-  HeaderContainer,
-  Navigation,
-  StyledLink,
-  IconWrapper,
-} from './Header.styled';
+// components/Header.js
+import React from 'react';
+import { Settings, Moon } from 'lucide-react';
+import { HeaderContainer } from './Header.styled';
 
-export const Header = () => {
-
+const Header = () => {
   return (
     <HeaderContainer>
-      <Navigation>
-        <StyledLink to="/first">
-          <IconWrapper>
-          </IconWrapper>
-          First
-        </StyledLink>
-        <StyledLink to="/second">
-          <IconWrapper>
-          </IconWrapper>
-          Second
-        </StyledLink>
-      </Navigation>
+      <h2>TEXT</h2>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <Settings size={20} />
+        <Moon size={20} />
+        <span>Nadiia</span>
+        <img src="/api/placeholder/32/32" alt="User" style={{ width: '2rem', height: '2rem', borderRadius: '9999px' }} />
+      </div>
     </HeaderContainer>
   );
 };
+
+export default Header;
