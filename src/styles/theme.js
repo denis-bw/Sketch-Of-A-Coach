@@ -1,6 +1,6 @@
 
 export const lightTheme = {
-  mainBGColor: '#963535',
+  mainBGColor: '#FFFFFF',
 };
 
 export const darkTheme = {
