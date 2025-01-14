@@ -17,8 +17,22 @@ import {
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [manualToggle, setManualToggle] = useState(false); 
   const location = useLocation();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleMenuItemClick = () => {
+    if (isMobile && isOpen) {
+      toggleSidebar();
+    }
+  };
 
   const toggleSubmenu = (menu) => {
     setActiveSubmenu(activeSubmenu === menu ? null : menu);
@@ -70,15 +84,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     }
   ];
 
-
-  useEffect(() => {
-    if (isMobile && isOpen && manualToggle) {
-      toggleSidebar(); 
-    }
-  }, [location.pathname, isMobile, isOpen, manualToggle, toggleSidebar]);
-
   const handleSidebarToggle = () => {
-    setManualToggle(true); 
     toggleSidebar();
   };
 
@@ -95,7 +101,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
       <Navigation>
         {menuItems.map((item) => {
-          const isActive = isSubmenuActive(item.submenu || []);
+          const isActive = item.submenu ? isSubmenuActive(item.submenu) : location.pathname === item.path;
           return (
             <div key={item.name}>
               {item.submenu ? (
@@ -115,7 +121,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                   />
                 </StyledLink>
               ) : (
-                <StyledLink to={item.path} active={location.pathname === item.path ? 1 : 0}>
+                <StyledLink 
+                  to={item.path} 
+                  active={isActive ? 1 : 0}
+                  onClick={handleMenuItemClick}
+                >
                   <IconWrapper>{item.icon}</IconWrapper>
                   <span>{item.name}</span>
                 </StyledLink>
@@ -127,7 +137,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                     <SubMenuItem 
                       key={subItem.name} 
                       to={subItem.path}
-                      className={location.pathname.startsWith(subItem.path) ? 'active' : ''} 
+                      className={location.pathname.startsWith(subItem.path) ? 'active' : ''}
+                      onClick={handleMenuItemClick}
                     >
                       {subItem.name}
                     </SubMenuItem>
@@ -139,7 +150,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         })}
       </Navigation>
 
-      <LogoutButton>
+      <LogoutButton onClick={handleMenuItemClick}>
         <LogOut size={18} />
         <span>Вийти</span>
       </LogoutButton>
