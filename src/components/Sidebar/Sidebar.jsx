@@ -91,7 +91,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
     <SidebarContainer isOpen={isOpen}>
       <LogoContainer>
-        <Logo to={"/my-account"}>Coach's Sketch</Logo>
+        <Logo onClick={handleMenuItemClick} to={"/my-account"}>Coach's Sketch</Logo>
         {isOpen && (
           <SidebarToggleButton onClick={handleSidebarToggle}>X</SidebarToggleButton>
         )}
