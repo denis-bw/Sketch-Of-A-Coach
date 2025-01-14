@@ -33,7 +33,7 @@ export const SidebarContainer = styled.div`
     height: 100%;
     transform: ${props => props.isOpen ? 'translateX(0)' : 'translateX(-100%)'};
     transition: transform 0.3s ease;
-    overflow-y: auto;  /* Додаємо прокручування, якщо контент перевищує висоту */
+    overflow-y: auto; 
   }
 `;
 

@@ -68,19 +68,19 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     }
   ];
 
-  // Закриваємо сайдбар при зміні шляху для мобільних пристроїв
+ 
   useEffect(() => {
-    if (window.innerWidth <= 768) {
-      toggleSidebar(); // Закриваємо сайдбар, якщо ширина екрана <= 768px
+    if (window.innerWidth <= 768 && isOpen) {
+      toggleSidebar(); 
     }
-  }, [location.pathname, toggleSidebar]);
+  }, [location.pathname, isOpen, toggleSidebar]);
 
   return (
     <SidebarContainer isOpen={isOpen}>
       <LogoContainer>
         <Logo to={"/my-account"}>Coach's Sketch</Logo>
         
-        {/* Кнопка для закриття сайдбару, яка відображається тільки на мобільних пристроях */}
+        
         {isOpen && (
           <SidebarToggleButton onClick={toggleSidebar}>X</SidebarToggleButton>
         )}
