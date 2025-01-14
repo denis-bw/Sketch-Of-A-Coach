@@ -17,7 +17,8 @@ import {
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const location = useLocation(); // використання хука для відстеження зміни шляху
+  const [manualToggle, setManualToggle] = useState(false); 
+  const location = useLocation();
 
   const toggleSubmenu = (menu) => {
     setActiveSubmenu(activeSubmenu === menu ? null : menu);
@@ -69,19 +70,24 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     }
   ];
 
-  // Закриваємо сайдбар при зміні маршруту
+
   useEffect(() => {
-    if (isOpen) {
-      toggleSidebar(); // закриваємо сайдбар при переході на нову сторінку
+    if (isMobile && isOpen && manualToggle) {
+      toggleSidebar(); 
     }
-  }, [location.pathname, isOpen, toggleSidebar]); // слідкуємо за зміною маршруту
+  }, [location.pathname, isMobile, isOpen, manualToggle, toggleSidebar]);
+
+  const handleSidebarToggle = () => {
+    setManualToggle(true); 
+    toggleSidebar();
+  };
 
   return (
     <SidebarContainer isOpen={isOpen}>
       <LogoContainer>
         <Logo to={"/my-account"}>Coach's Sketch</Logo>
         {isOpen && (
-          <SidebarToggleButton onClick={toggleSidebar}>X</SidebarToggleButton>
+          <SidebarToggleButton onClick={handleSidebarToggle}>X</SidebarToggleButton>
         )}
       </LogoContainer>
 
