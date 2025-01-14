@@ -33,6 +33,7 @@ export const SidebarContainer = styled.div`
     height: 100%;
     transform: ${props => props.isOpen ? 'translateX(0)' : 'translateX(-100%)'};
     transition: transform 0.3s ease;
+    overflow-y: auto;  /* Додаємо прокручування, якщо контент перевищує висоту */
   }
 `;
 
@@ -43,15 +44,12 @@ export const Logo = styled(NavLink)`
   text-decoration: none;
 `;
 
-
 export const LogoContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
 `;
-
-
 
 export const Navigation = styled.nav`
   display: flex;

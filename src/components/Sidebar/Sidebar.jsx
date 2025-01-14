@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { User, Users, Calendar, BarChart2, DollarSign, ChevronRight, LogOut } from 'lucide-react';
 import {
@@ -67,6 +67,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       ]
     }
   ];
+
+  // Закриваємо сайдбар при зміні шляху для мобільних пристроїв
+  useEffect(() => {
+    if (window.innerWidth <= 768) {
+      toggleSidebar(); // Закриваємо сайдбар, якщо ширина екрана <= 768px
+    }
+  }, [location.pathname, toggleSidebar]);
 
   return (
     <SidebarContainer isOpen={isOpen}>
