@@ -17,9 +17,7 @@ import {
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const location = useLocation();
-
-
+  const location = useLocation(); // використання хука для відстеження зміни шляху
 
   const toggleSubmenu = (menu) => {
     setActiveSubmenu(activeSubmenu === menu ? null : menu);
@@ -71,23 +69,27 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     }
   ];
 
+  // Закриваємо сайдбар при зміні маршруту
+  useEffect(() => {
+    if (isOpen) {
+      toggleSidebar(); // закриваємо сайдбар при переході на нову сторінку
+    }
+  }, [location.pathname, isOpen, toggleSidebar]); // слідкуємо за зміною маршруту
+
   return (
     <SidebarContainer isOpen={isOpen}>
       <LogoContainer>
         <Logo to={"/my-account"}>Coach's Sketch</Logo>
-        
-        {/* Кнопка для закриття сайдбару, яка відображається тільки на мобільних пристроях */}
         {isOpen && (
           <SidebarToggleButton onClick={toggleSidebar}>X</SidebarToggleButton>
         )}
       </LogoContainer>
-      
+
       <p>Панель користувача</p>
 
       <Navigation>
         {menuItems.map((item) => {
           const isActive = isSubmenuActive(item.submenu || []);
-
           return (
             <div key={item.name}>
               {item.submenu ? (
