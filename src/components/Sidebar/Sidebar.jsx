@@ -9,12 +9,14 @@ import {
   IconWrapper,
   LogoutButton,
   SubMenu,
-  SubMenuItem
+  SubMenuItem,
+  SidebarToggleButton,
+  LogoContainer
 } from './Sidebar.styled';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
-  const location = useLocation(); 
+  const location = useLocation();
 
   const toggleSubmenu = (menu) => {
     setActiveSubmenu(activeSubmenu === menu ? null : menu);
@@ -67,14 +69,22 @@ const Sidebar = () => {
   ];
 
   return (
-    <SidebarContainer>
-      <Logo>Coach's Sketch</Logo>
-      <p>Панель користувача</p>
+    <SidebarContainer isOpen={isOpen}>
+      <LogoContainer>
+        <Logo to={"/my-account"}>Coach's Sketch</Logo>
+        
+        {/* Кнопка для закриття сайдбару, яка відображається тільки на мобільних пристроях */}
+        {isOpen && (
+          <SidebarToggleButton onClick={toggleSidebar}>X</SidebarToggleButton>
+        )}
+      </LogoContainer>
       
+      <p>Панель користувача</p>
+
       <Navigation>
         {menuItems.map((item) => {
-          const isActive = isSubmenuActive(item.submenu || []); 
-          
+          const isActive = isSubmenuActive(item.submenu || []);
+
           return (
             <div key={item.name}>
               {item.submenu ? (
@@ -99,14 +109,14 @@ const Sidebar = () => {
                   <span>{item.name}</span>
                 </StyledLink>
               )}
-              
+
               {item.submenu && activeSubmenu === item.name && (
                 <SubMenu>
                   {item.submenu.map((subItem) => (
                     <SubMenuItem 
                       key={subItem.name} 
                       to={subItem.path}
-                      className={location.pathname.startsWith(subItem.path) ? 'active' : ''}
+                      className={location.pathname.startsWith(subItem.path) ? 'active' : ''} 
                     >
                       {subItem.name}
                     </SubMenuItem>
@@ -117,7 +127,7 @@ const Sidebar = () => {
           );
         })}
       </Navigation>
-      
+
       <LogoutButton>
         <LogOut size={18} />
         <span>Вийти</span>

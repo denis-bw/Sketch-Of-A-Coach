@@ -39,7 +39,6 @@ import GlobalStyles from './styles/GlobalStyles';
 import { lightTheme, darkTheme } from './styles/theme';
 
 
-
 const test = import.meta.env.VITE_API_TEST;
 
 function App() {
@@ -53,9 +52,8 @@ function App() {
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
        <GlobalStyles />
       <AppWrapper>
-        <button style={{ height: "30px", width: "50px", color: "teal" }} onClick={toggleTheme}></button>
           <Routes>
-            <Route path="/" element={<SharedLayout />}>
+            <Route path="/" element={<SharedLayout isDarkMode={isDarkMode} toggleTheme={toggleTheme} />}>
               {/* Мій аккаунт */}
               <Route path="my-account" element={<MyAccount />} />
 

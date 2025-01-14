@@ -1,4 +1,3 @@
-// components/MainContent.styled.js
 import styled from 'styled-components';
 
 export const MainContentContainer = styled.main`
@@ -7,4 +6,7 @@ export const MainContentContainer = styled.main`
   background-color: ${(p) => p.theme.mainBGColor};
   border-radius: 0.5rem;
   overflow: auto;
+   @media (max-width: 768px) {
+    margin: 16px;
+  }
 `;

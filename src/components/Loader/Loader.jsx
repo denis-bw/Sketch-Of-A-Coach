@@ -12,7 +12,7 @@ import {SpinerContainer} from './Loader.styled'
                 ariaLabel="color-ring-loading"
                 wrapperStyle={{}}
                 wrapperClass="color-ring-wrapper"
-                colors={[ '#DEDEDE','#008767', '#FB4566', '#E2EFDF', '#67BC8E']}
+                colors={[ '#3fdb66','#008767', '#bce91c', '#E2EFDF', '#67BC8E']}
             />
         </ SpinerContainer >
     )

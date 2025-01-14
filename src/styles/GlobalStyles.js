@@ -9,7 +9,12 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* background-color: ${({ theme }) => theme.mainBGColor}; */
+    color: ${({ theme }) => theme.text || '#000'};
+    transition: background-color 0.5s ease, color 0.5s ease;
+  
   }
+
 
   *, *::before, *::after {
     box-sizing: border-box;
@@ -19,7 +24,6 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     line-height: 1.4;
-    /* background-color: ${({ theme }) => theme.mainBGColor}; */
   }
 
 

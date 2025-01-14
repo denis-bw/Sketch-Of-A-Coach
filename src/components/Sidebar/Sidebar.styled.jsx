@@ -1,6 +1,20 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+export const SidebarToggleButton = styled.button`
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #10b981;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  align-self: flex-end;
+
+  &:hover {
+    color: #059669;
+  }
+`;
+
 export const SidebarContainer = styled.div`
   width: 240px;
   background-color: white;
@@ -8,13 +22,36 @@ export const SidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+
+  /* Для мобільної версії */
+  @media (max-width: 768px) {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 101111;
+    width: 100%;
+    height: 100%;
+    transform: ${props => props.isOpen ? 'translateX(0)' : 'translateX(-100%)'};
+    transition: transform 0.3s ease;
+  }
 `;
 
-export const Logo = styled.h1`
-  color: #10b981;
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
+export const Logo = styled(NavLink)`
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
 `;
+
+
+export const LogoContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+`;
+
+
 
 export const Navigation = styled.nav`
   display: flex;
