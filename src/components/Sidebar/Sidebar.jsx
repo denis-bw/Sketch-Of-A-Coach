@@ -19,23 +19,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const location = useLocation();
 
-  useEffect(() => {
-    // Оновлення стану при зміні ширини екрану
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
 
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isMobile && isOpen) {
-      toggleSidebar(); // Закриваємо сайдбар, якщо він відкритий на мобільному
-    }
-  }, [location.pathname, isOpen, isMobile, toggleSidebar]);
 
   const toggleSubmenu = (menu) => {
     setActiveSubmenu(activeSubmenu === menu ? null : menu);
