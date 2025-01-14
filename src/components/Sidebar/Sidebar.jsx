@@ -16,7 +16,26 @@ import {
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const location = useLocation();
+
+  useEffect(() => {
+    // Оновлення стану при зміні ширини екрану
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isMobile && isOpen) {
+      toggleSidebar(); // Закриваємо сайдбар, якщо він відкритий на мобільному
+    }
+  }, [location.pathname, isOpen, isMobile, toggleSidebar]);
 
   const toggleSubmenu = (menu) => {
     setActiveSubmenu(activeSubmenu === menu ? null : menu);
@@ -68,19 +87,12 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     }
   ];
 
- 
-  useEffect(() => {
-    if (window.innerWidth <= 768 && isOpen) {
-      toggleSidebar(); 
-    }
-  }, [location.pathname, isOpen, toggleSidebar]);
-
   return (
     <SidebarContainer isOpen={isOpen}>
       <LogoContainer>
         <Logo to={"/my-account"}>Coach's Sketch</Logo>
         
-        
+        {/* Кнопка для закриття сайдбару, яка відображається тільки на мобільних пристроях */}
         {isOpen && (
           <SidebarToggleButton onClick={toggleSidebar}>X</SidebarToggleButton>
         )}
