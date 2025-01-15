@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { User, Users, Calendar, BarChart2, DollarSign, ChevronRight, LogOut } from 'lucide-react';
+import { ReactComponent as CloseIcon } from '../../assets/CloseIcon.svg';
 import {
   SidebarContainer,
   Logo,
@@ -11,7 +12,8 @@ import {
   SubMenu,
   SubMenuItem,
   SidebarToggleButton,
-  LogoContainer
+  LogoContainer,
+  NamedMenu,
 } from './Sidebar.styled';
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
@@ -93,11 +95,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       <LogoContainer>
         <Logo onClick={handleMenuItemClick} to={"/my-account"}>Coach's Sketch</Logo>
         {isOpen && (
-          <SidebarToggleButton onClick={handleSidebarToggle}>X</SidebarToggleButton>
+          <SidebarToggleButton onClick={handleSidebarToggle}>
+           < CloseIcon />
+          </SidebarToggleButton>
         )}
       </LogoContainer>
 
-      <p>Панель користувача</p>
+      <NamedMenu>Панель користувача</NamedMenu>
 
       <Navigation>
         {menuItems.map((item) => {

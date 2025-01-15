@@ -1,7 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy } from "react";
 import SharedLayout from 'components/SharedLayout/SharedLayout';
+import React, { useState, lazy } from 'react';
 
+import { ThemeProvider } from 'styled-components';
+import GlobalStyles from './styles/GlobalStyles';
+import { lightTheme, darkTheme } from './styles/theme';
 
 const MyAccount = lazy(() => import('./pages/MyAccount/MyAccount'));
 const TeamsList = lazy(() => import('./pages/MyTeams/TeamsList/TeamsList'));
@@ -32,73 +35,63 @@ const SponsorsAndExpensessPayments = lazy(() => import('./pages/Payments/Sponsor
 
 const ErrorPage = lazy(() => import('pages/ErrorPage/ErrorPage'));
 
-import { AppWrapper } from './App.styled';
-import React, { useState } from 'react';
-import { ThemeProvider } from 'styled-components';
-import GlobalStyles from './styles/GlobalStyles';
-import { lightTheme, darkTheme } from './styles/theme';
+
 
 
 const test = import.meta.env.VITE_API_TEST;
 
 function App() {
+
   console.log(test);
+
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
+
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
        <GlobalStyles />
-      <AppWrapper>
           <Routes>
             <Route path="/" element={<SharedLayout isDarkMode={isDarkMode} toggleTheme={toggleTheme} />}>
-              {/* Мій аккаунт */}
+              
               <Route path="my-account" element={<MyAccount />} />
 
-              {/* Мої команди */}
                 <Route path="teams" element={<TeamsList />} />
                 <Route path="teams/:teamId" element={<TeamDetails />} />
 
-                {/* Атлети */}
                 <Route path="athletes" element={<AthletesList />} />
                 <Route path="athletes/:athleteId" element={<AthleteDetails />}/>
                 <Route path="athletes/:athleteId/parents" element={<ParentsInfo />} />
                 <Route path="athletes/:athleteId/history" element={<AthleteHistory />} />
                 
-                {/* Виміри */}
                 <Route path="measurements" element={<MeasurementsSelection />} />
                 <Route path="measurements/:athleteId" element={<Measurements />} />
 
-              {/* Календар */}
               <Route path="calendar" element={<MonthlyCalendar />} />
               <Route path="calendar/week" element={<WeeklyCalendar />} />
               <Route path="calendar/event" element={<Event />} />
               <Route path="draft-calendar" element={<Draft />} />
 
-              {/* Статистика */}
               <Route path="statistics-yearly/" element={<YearlyStatistics />} />
               <Route path="statistics-measurements" element={<ChooseAthleteMeasurementsStatistics />} />
               <Route path="statistics-measurements/:athleteId" element={<MeasurementsStatistics />} />
               {/* monthly-statistics/:athleteId and year st &&?? */}
+          
               <Route path="statistics-visits" element={<ChooseAthleteVisitsStatistics />} />
               
               <Route path="statistics-visits/:athleteId" element={<VisitsStatistics />} />
-          
 
-              {/* Оплата */}
               <Route path="payment-history" element={<ChooseAthletePayment />} />
               <Route path="payment-history/:athleteId" element={<PaymentHistory />}/>
               <Route path="payment-history/:athleteId/payment-details/:paymentId" element={<PaymentDetails />} />
 
               <Route path="sponsors-and-expensess-payments" element={<SponsorsAndExpensessPayments />} />
 
-
             <Route path="*" element={<ErrorPage />} />
             </Route>
           </Routes>
-      </AppWrapper>
     </ThemeProvider>
   );
 }

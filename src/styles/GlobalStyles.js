@@ -2,17 +2,14 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
 
-  
   html, body {
     font-family: 'Inter Tight', sans-serif;
     padding: 0;
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* background-color: ${({ theme }) => theme.mainBGColor}; */
-    color: ${({ theme }) => theme.text || '#000'};
+    color: ${({ theme }) => theme.text || '#343434'};
     transition: background-color 0.5s ease, color 0.5s ease;
-  
   }
 
 

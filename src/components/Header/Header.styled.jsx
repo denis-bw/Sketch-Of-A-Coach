@@ -4,8 +4,11 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 30px 56px 0px 56px;
   /* background-color: ${({ theme }) => theme.mainBGColor}; */
+  @media (max-width: 768px) {
+    padding: 20px 18px 0px 18px;
+  }
 `;
 
 export const ToggleButton = styled.button`

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+
 export const SidebarToggleButton = styled.button`
   background-color: transparent;
   border: none;
@@ -12,6 +13,12 @@ export const SidebarToggleButton = styled.button`
 
   &:hover {
     color: #059669;
+  }
+  
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor; 
   }
 `;
 
@@ -40,15 +47,25 @@ export const SidebarContainer = styled.div`
 export const Logo = styled(NavLink)`
   font-size: 24px;
   font-weight: bold;
-  color: #000;
+  color: ${(p) => p.theme.greenMain};
   text-decoration: none;
+`;
+
+ export const NamedMenu = styled.p`
+  color: ${(p) => p.theme.gray};
+  text-decoration: none;
+  font-size: 14px;
+  padding: 0px 10px 14px 10px;
 `;
 
 export const LogoContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 32px 10px 56px 10px;
+  @media (max-width: 768px) {
+     padding: 0px 10px 26px 10px;
+  }
 `;
 
 export const Navigation = styled.nav`
