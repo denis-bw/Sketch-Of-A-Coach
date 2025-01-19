@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { ReactComponent as OriginalRightChevronIcon } from '../../assets/RightChevronIcon.svg';
+import { ReactComponent as OriginalLogoutIcon } from '../../assets/LogoutIcon.svg';
+import { ReactComponent as OriginalCalendarIcon } from '../../assets/CalendarIcon.svg';
 
 export const SidebarToggleButton = styled.button`
   background-color: transparent;
@@ -164,4 +167,33 @@ export const SidebarIcon = styled.button`
     height: 100%;
     fill: ${(p) => p.theme.textBlack };
   }
+`;
+
+export const RightChevronIcon = styled(OriginalRightChevronIcon)`
+  fill: ${(p) => p.theme.textBlack};
+  width: 14px;
+  height: 14px;
+  margin-left: auto;
+  transform: ${({ isActive }) => (isActive ? 'rotate(90deg)' : 'none')};
+  transition: transform 0.3s ease;
+`;
+
+
+export const LogoutIcon = styled(OriginalLogoutIcon)`
+  fill: ${(p) => p.theme.white};
+  width: 18px;
+  height: 18px;
+  stroke-width: 12;
+  stroke: ${(p) => p.theme.white};
+  margin-right: 12px;
+`;
+
+
+export const CalendarIcon = styled(OriginalCalendarIcon)`
+  stroke: ${(p) => p.theme.iconColor};
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import { ChevronRight, LogOut } from 'lucide-react';
-
+import {  useLocation } from 'react-router-dom';
 import { ReactComponent as CloseIcon } from '../../assets/CloseIcon.svg';
 import { ReactComponent as MyAccount } from '../../assets/MyAccount.svg';
-import { ReactComponent as CalendarIcon } from '../../assets/CalendarIcon.svg';
+// import { ReactComponent as CalendarIcon } from '../../assets/CalendarIcon.svg';
 import { ReactComponent as TeamIcon } from '../../assets/TeamIcon.svg';
 import { ReactComponent as StatisticsIcon } from '../../assets/StatisticsIcon.svg';
 import { ReactComponent as PaymentsIcon } from '../../assets/PaymentsIcon.svg';
@@ -22,6 +20,9 @@ import {
   LogoContainer,
   NamedMenu,
   SidebarIcon,
+  RightChevronIcon,
+  LogoutIcon,
+  CalendarIcon,
 } from './Sidebar.styled';
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
@@ -69,7 +70,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     },
     { 
       name: 'Календар', 
-      icon:  <SidebarIcon><CalendarIcon   /></SidebarIcon>, 
+      icon: <CalendarIcon   />, 
       submenu: [
         { name: 'Calendar', path: '/calendar' },
         { name: 'Draft', path: '/draft-calendar' }
@@ -124,13 +125,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 >
                   <IconWrapper>{item.icon}</IconWrapper>
                   <span>{item.name}</span>
-                  <ChevronRight 
-                    size={16} 
-                    style={{
-                      marginLeft: 'auto',
-                      transform: activeSubmenu === item.name ? 'rotate(90deg)' : 'none'
-                    }}
-                  />
+                  <RightChevronIcon isActive={activeSubmenu === item.name} />
                 </StyledLink>
               ) : (
                 <StyledLink 
@@ -162,8 +157,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         })}
       </Navigation>
 
-      <LogoutButton onClick={handleMenuItemClick}>
-        <LogOut size={18} />
+      <LogoutButton >
+        <LogoutIcon styled=' width: 100%, height: 100%' />
         <span>Вийти</span>
       </LogoutButton>
     </SidebarContainer>

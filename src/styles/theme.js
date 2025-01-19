@@ -14,7 +14,7 @@ export const lightTheme = {
 
   BgActiveLink: "#97DFC0",
   BgActiveLinkHover: "#67BC8E", 
-  iconColor: "##343434",
+  iconColor: "#343434",
 };
 
 export const darkTheme = {
@@ -27,11 +27,11 @@ export const darkTheme = {
   red: "#FB4566",
 
   textBlack: "#ffffff",
-  textGray: "#ffffff",
+  textGray: "#e0dede",
   mainBGColor: '#333',
   ContainerBGColor: '#4D4D4D',
 
   BgActiveLink: "#212121", 
   BgActiveLinkHover: "#141414", 
-  iconColor: "##ffffff",
+  iconColor: "#ffffff",
 };
