@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-
 export const SidebarToggleButton = styled.button`
   background-color: transparent;
   border: none;
   font-size: 1.5rem;
-  color: #10b981;
+  color: ${(p) => p.theme.greenMain};
   cursor: pointer;
   margin-bottom: 1rem;
   align-self: flex-end;
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   &:hover {
-    color: #059669;
+    color: ${(p) => p.theme.darkGreen};
   }
   
   svg {
@@ -24,13 +24,12 @@ export const SidebarToggleButton = styled.button`
 
 export const SidebarContainer = styled.div`
   width: 240px;
-  background-color: white;
+  background-color: ${(p) => p.theme.ContainerBGColor};
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-
-  /* Для мобільної версії */
+  height: 100%;
+  overflow-y: auto; 
   @media (max-width: 768px) {
     position: fixed;
     left: 0;
@@ -52,7 +51,7 @@ export const Logo = styled(NavLink)`
 `;
 
  export const NamedMenu = styled.p`
-  color: ${(p) => p.theme.gray};
+  color: ${(p) => p.theme.textGray};
   text-decoration: none;
   font-size: 14px;
   padding: 0px 10px 14px 10px;
@@ -81,19 +80,20 @@ export const StyledLink = styled(NavLink)`
   margin-bottom: 0.5rem;
   text-decoration: none;
   color: inherit;
-  background-color: ${props => props.active ? '#d1fae5' : 'transparent'};
+  background-color: ${props => props.active ? props.theme.BgActiveLink : 'transparent'};
   border-radius: 0.25rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   ${props => props.as === 'div' && `
     cursor: pointer;
   `}
   &.active {
-    background-color: #d1fae5;
-    color: #10b981;
+    background-color:  ${(p) => p.theme.BgActiveLink};
+    color:  ${(p) => p.theme.textBlack};
   }
 
   &:hover {
-    background-color: #f3f4f6;
+    background-color:  ${(p) => p.theme.BgActiveLinkHover};
   }
 `;
 
@@ -105,16 +105,17 @@ export const IconWrapper = styled.span`
 export const LogoutButton = styled.button`
   margin-top: auto;
   padding: 0.75rem;
-  background-color: #10b981;
-  color: white;
+  background-color: ${(p) => p.theme.greenMain};
+  color: ${(p) => p.theme.white};
   border-radius: 0.25rem;
   display: flex;
   align-items: center;
   border: none;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
   
   &:hover {
-    background-color: #059669;
+    background-color: ${(p) => p.theme.darkGreen};
   }
 
   span {
@@ -133,12 +134,34 @@ export const SubMenuItem = styled(NavLink)`
   text-decoration: none;
   color: inherit;
   font-size: 0.9rem;
-
+  transition: background-color 0.3s ease, color 0.3s ease;
+  
   &:hover {
-    background-color: #f3f4f6;
+    background-color:  ${(p) => p.theme.BgActiveLinkHover};
+    color: ${(p) => p.theme.white};
   }
 
   &.active {
-    color: #10b981;
+    color: ${(p) => p.theme.greenMain};
+    font-weight: 700;
+  }
+
+  &:hover.active {
+     color: ${(p) => p.theme.white};
+  }
+`;
+
+export const SidebarIcon = styled.button`
+  /* background-color: black; */
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: ${(p) => p.theme.textBlack };
   }
 `;

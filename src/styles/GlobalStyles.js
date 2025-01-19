@@ -6,9 +6,11 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Inter Tight', sans-serif;
     padding: 0;
     margin: 0;
+    line-height: 1.4;
+    background-color: ${({ theme }) => theme.mainBGColor};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: ${({ theme }) => theme.text || '#343434'};
+    color: ${({ theme }) => theme.textBlack || '#343434'};
     transition: background-color 0.5s ease, color 0.5s ease;
   }
 
@@ -16,13 +18,6 @@ const GlobalStyles = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
   }
-
-  body {
-    margin: 0;
-    padding: 0;
-    line-height: 1.4;
-  }
-
 
   h1, h2, h3, h4, h5, h6 {
     margin: 0;

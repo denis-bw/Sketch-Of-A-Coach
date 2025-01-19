@@ -1,4 +1,3 @@
-// components/MainContent.js
 import React from 'react';
 import { MainContentContainer } from './MainContent.styled';
 

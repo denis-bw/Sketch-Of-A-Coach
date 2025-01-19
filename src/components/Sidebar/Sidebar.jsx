@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { User, Users, Calendar, BarChart2, DollarSign, ChevronRight, LogOut } from 'lucide-react';
+import { ChevronRight, LogOut } from 'lucide-react';
+
 import { ReactComponent as CloseIcon } from '../../assets/CloseIcon.svg';
+import { ReactComponent as MyAccount } from '../../assets/MyAccount.svg';
+import { ReactComponent as CalendarIcon } from '../../assets/CalendarIcon.svg';
+import { ReactComponent as TeamIcon } from '../../assets/TeamIcon.svg';
+import { ReactComponent as StatisticsIcon } from '../../assets/StatisticsIcon.svg';
+import { ReactComponent as PaymentsIcon } from '../../assets/PaymentsIcon.svg';
+
 import {
   SidebarContainer,
   Logo,
@@ -14,6 +21,7 @@ import {
   SidebarToggleButton,
   LogoContainer,
   NamedMenu,
+  SidebarIcon,
 } from './Sidebar.styled';
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
@@ -47,12 +55,12 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   const menuItems = [
     { 
       name: 'Мій аккаунт', 
-      icon: <User size={18} />, 
+      icon: <SidebarIcon><MyAccount  /></SidebarIcon>, 
       path: '/my-account' 
     },
     { 
       name: 'Мої команди', 
-      icon: <Users size={18} />, 
+      icon: <SidebarIcon><TeamIcon /></SidebarIcon>, 
       submenu: [
         { name: 'Teams', path: '/teams' },
         { name: 'Athletes', path: '/athletes' },
@@ -61,7 +69,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     },
     { 
       name: 'Календар', 
-      icon: <Calendar size={18} />, 
+      icon:  <SidebarIcon><CalendarIcon   /></SidebarIcon>, 
       submenu: [
         { name: 'Calendar', path: '/calendar' },
         { name: 'Draft', path: '/draft-calendar' }
@@ -69,7 +77,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     },
     { 
       name: 'Статистика', 
-      icon: <BarChart2 size={18} />, 
+      icon:  <SidebarIcon><StatisticsIcon   /></SidebarIcon>, 
       submenu: [
         { name: 'Yearly', path: '/statistics-yearly' },
         { name: 'Measurements', path: '/statistics-measurements' },
@@ -78,7 +86,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     },
     { 
       name: 'Платежі', 
-      icon: <DollarSign size={18} />, 
+      icon:  <SidebarIcon><PaymentsIcon /></SidebarIcon>, 
       submenu: [
         { name: 'Teams', path: '/payment-history' },
         { name: 'Sponsors & Additional-Expenses', path: '/sponsors-and-expensess-payments' }

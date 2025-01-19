@@ -25,7 +25,6 @@ const SharedLayout = ({ isDarkMode, toggleTheme }) => {
 
   return (
     <LayoutContainer>
-      {/* Рендеримо Sidebar тільки, коли мобільна версія і сайдбар відкритий */}
       {(isMobile && isSidebarOpen) || !isMobile ? (
         <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       ) : null}
