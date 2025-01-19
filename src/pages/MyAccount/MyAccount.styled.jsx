@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
 
 export const Title = styled.p`
-  color: #121212;
+  color: ${(p) => p.theme.textColor};
 `;

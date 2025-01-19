@@ -8,20 +8,18 @@ import {
   ContanerSettings, 
   TexeName,
   MoonIcon,
-  SunIcon 
+  SunIcon,
+  MenuIcon
 } from './Header.styled';
 
 import { ReactComponent as SettingsIcon } from '../../assets/SettingsIcon.svg';
-import { ReactComponent as MenuIcon } from '../../assets/MenuIcon.svg';
-
-
 
 const Header = ({ isDarkMode, toggleTheme, toggleSidebar, isMobile }) => {
   return (
     <HeaderContainer>
       {isMobile && (
         <>
-          <BurgerButton onClick={toggleSidebar}><MenuIcon style={{ width: '24px', height: '24px' }}  /></BurgerButton>
+          <BurgerButton onClick={toggleSidebar}><MenuIcon  /></BurgerButton>
           <Title>TEXTФ ФФФафіваф івафіваів</Title>
           <ContanerSettings>
             <SettingsIcon style={{ width: '20px', height: '20px' }}  />

@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 import { ReactComponent as OriginalMoonIcon } from '../../assets/MoonIcon.svg';
 import { ReactComponent as OriginalSunIcon } from '../../assets/SunIcon.svg';
+import { ReactComponent as OriginalMenuIcon } from '../../assets/MenuIcon.svg';
 
+
+export const MenuIcon = styled(OriginalMenuIcon)`
+  width: 24px;
+  height: 24px;
+  stroke: ${(p) => p.theme.iconColor};
+`;
 
 export const MoonIcon= styled(OriginalMoonIcon)`
-  /* fill: ${(p) => p.theme.iconColor}; */
   width: 22px;
   height: 22px;
   stroke-width: 2;
