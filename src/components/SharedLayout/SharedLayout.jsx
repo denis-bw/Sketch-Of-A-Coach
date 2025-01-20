@@ -7,7 +7,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import MainContent from '../MainContent/MainContent';
 import Loader from '../Loader/Loader';
 
-const SharedLayout = ({ isDarkMode, toggleTheme }) => {
+const SharedLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
@@ -31,8 +31,6 @@ const SharedLayout = ({ isDarkMode, toggleTheme }) => {
 
       <ContentContainer>
         <Header
-          isDarkMode={isDarkMode}
-          toggleTheme={toggleTheme}
           toggleSidebar={toggleSidebar}
           isMobile={isMobile}
         />

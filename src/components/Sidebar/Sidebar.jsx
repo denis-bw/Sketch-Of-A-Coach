@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {  useLocation } from 'react-router-dom';
 import { ReactComponent as CloseIcon } from '../../assets/CloseIcon.svg';
 import { ReactComponent as MyAccount } from '../../assets/MyAccount.svg';
-// import { ReactComponent as CalendarIcon } from '../../assets/CalendarIcon.svg';
 import { ReactComponent as TeamIcon } from '../../assets/TeamIcon.svg';
 import { ReactComponent as StatisticsIcon } from '../../assets/StatisticsIcon.svg';
 import { ReactComponent as PaymentsIcon } from '../../assets/PaymentsIcon.svg';

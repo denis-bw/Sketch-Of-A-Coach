@@ -91,7 +91,7 @@ export const ThemeIcon = styled.div`
   align-items: center;
   justify-content: center;
   color: ${(p) => p.theme.textBlack};
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
   transform: ${({ $isDarkMode }) => ($isDarkMode ? 'rotate(180deg)' : 'rotate(0deg)')};
   opacity: ${({ $isDarkMode }) => ($isDarkMode ? 1 : 0.8)};
 
