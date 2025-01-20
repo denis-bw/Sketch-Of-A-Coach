@@ -21,7 +21,6 @@ const Header = ({ toggleSidebar, isMobile }) => {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
   const isDarkMode = theme === 'dark';
-  
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
