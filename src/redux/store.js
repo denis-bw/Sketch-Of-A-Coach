@@ -11,14 +11,17 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { authReducer } from './auth/authSlice.js';
 
 const rootReducer = combineReducers({
   theme: themeReducer,
+  auth: authReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['auth'],
 };
 
 export const store = configureStore({

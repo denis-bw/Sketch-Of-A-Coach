@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
-import React, { useState, lazy } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 
 const MyAccount = lazy(() => import('./pages/MyAccount/MyAccount'));
 const TeamsList = lazy(() => import('./pages/MyTeams/TeamsList/TeamsList'));
@@ -31,18 +31,30 @@ const SponsorsAndExpensessPayments = lazy(() => import('./pages/Payments/Sponsor
 
 const ErrorPage = lazy(() => import('pages/ErrorPage/ErrorPage'));
 
+const  RegisterPage  = lazy(() => import('pages/RegisterPage/RegisterPage'));
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+
+import RestrictedRoute from './components/RestrictedRoute.jsx'
+import PrivateRoute from './components/PrivateRoute.jsx'; 
+import Loader from './components/Loader/Loader';
 
 
 
 const test = import.meta.env.VITE_API_TEST;
 
 function App() {
-
+   
   console.log(test);
   return (
+    <Suspense fallback={<Loader />}>
     <Routes>
-      <Route path="/" element={<SharedLayout />}>
-        
+      <Route path="/" index element={<RestrictedRoute redirectTo="/my-account" component={< HomePage />} />} />
+      <Route path="/register" element={<RestrictedRoute redirectTo="/my-account" component={<RegisterPage />} />} />
+      <Route path="/login" element={<RestrictedRoute redirectTo="/my-account" component={<LoginPage />} />} />
+      
+      
+      <Route path="/" element={<PrivateRoute redirectTo="/login" component={<SharedLayout/>} />} >  
         <Route path="my-account" element={<MyAccount />} />
 
           <Route path="teams" element={<TeamsList />} />
@@ -75,10 +87,11 @@ function App() {
           <Route path="payment-history/:athleteId/payment-details/:paymentId" element={<PaymentDetails />} />
 
           <Route path="sponsors-and-expensess-payments" element={<SponsorsAndExpensessPayments />} />
-
-        <Route path="*" element={<ErrorPage />} />
+ 
       </Route>
-    </Routes>
+      <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </Suspense>
   );
 }
 export default App;
