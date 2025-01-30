@@ -1,0 +1,1 @@
+import{j as e,N as i}from"./index-79ccf7d2.js";const d=()=>{const a=[{id:1,name:"Team A"},{id:2,name:"Team B"},{id:3,name:"Team C"}];return e.jsxs("div",{children:[e.jsx("h1",{children:"Список команд"}),e.jsx("ul",{children:a.map(s=>e.jsx("li",{children:e.jsx(i,{to:`/teams/${s.id}`,children:s.name})},s.id))})]})};export{d as default};
