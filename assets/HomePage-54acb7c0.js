@@ -1,1 +1,0 @@
-import{j as e,L as i}from"./index-bf588e3e.js";const s=()=>e.jsxs("div",{children:[" ",e.jsx("p",{children:" HomePage"}),e.jsx(i,{to:"/login",children:" Log in "}),e.jsx(i,{to:"/register",children:"Sign up"})]});export{s as default};
