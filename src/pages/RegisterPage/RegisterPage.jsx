@@ -73,6 +73,7 @@ const RegisterPage = () => {
               value={formData.name} 
               onChange={handleChange}
               minLength={3}
+              maxLength={25}
               placeholder="Введіть ім'я"
               required
                 
@@ -87,6 +88,7 @@ const RegisterPage = () => {
               type="email" 
               value={formData.email} 
               onChange={handleChange} 
+              maxLength={40}
               placeholder="Введіть Email"
               required
             />
@@ -104,6 +106,7 @@ const RegisterPage = () => {
                 placeholder="Введіть пароль"
                 required
                 minLength={6}  
+                maxLength={20}
               />
               <TogglePasswordButton type="button" onClick={() => setShowPassword(prev => !prev)}>
                 {showPassword ? 'Сховати' : 'Показати'}

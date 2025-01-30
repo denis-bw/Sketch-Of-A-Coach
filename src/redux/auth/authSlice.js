@@ -21,14 +21,12 @@ const authSlice = createSlice({
     .addCase(fetchAuthorizationUser.fulfilled, (state, action) => {
       state.user.email = action.payload.email;
       state.user.username = action.payload.username;
-      // console.log(action)
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.isLoading = false;
     })
     .addCase(fetchAuthorizationUser.rejected, (state, action) => {
-      // const { message } = action.payload;
-      console.log('action', action)
+      // console.log('action', action)
       state.error = action.payload
       state.isLoading = false;
 

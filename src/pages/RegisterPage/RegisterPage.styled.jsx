@@ -57,7 +57,7 @@ export const Label = styled.label`
 export const Input = styled.input`
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 1.5px solid ${({ theme }) => theme.textGray};
+  border: 1.6px solid ${({ theme }) => theme.textGray};
   border-radius: 0.5rem;
   font-size: 1rem;
   background-color: ${({ theme }) => theme.ContainerBGColor};
@@ -66,20 +66,23 @@ export const Input = styled.input`
   
   &:focus {
     outline: none;
-    border-color: ${({ theme }) => theme.greenMain};
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.lightGreen};
+    border-color: ${({ theme }) => theme.lightGreen};
+    box-shadow: 0 0 0 2px ${({ theme }) => `rgba(${parseInt(theme.lightGreen.slice(1, 3), 16)}, ${parseInt(theme.lightGreen.slice(3, 5), 16)}, ${parseInt(theme.lightGreen.slice(5, 7), 16)}, 0.5)`};
   }
   
   &::placeholder {
     color: ${({ theme }) => theme.textGray};
   }
 
-  ${({ error }) => error && `
+  &:valid {
+    border-color:  ${({ theme }) => theme.lightGreen}
+  }
+  &:not(:placeholder-shown):invalid  {
     border-color: ${({ theme }) => theme.red};
-    &:focus {
-      box-shadow: 0 0 0 2px rgba(251, 69, 102, 0.2);
-    }
-  `}
+  }
+  &:focus:not(:placeholder-shown):invalid{
+     box-shadow: 0 0 0 2px ${({ theme }) => `rgba(${parseInt(theme.red.slice(1, 3), 16)}, ${parseInt(theme.red.slice(3, 5), 16)}, ${parseInt(theme.red.slice(5, 7), 16)}, 0.5)`};
+  }
 `;
 
 export const ErrorMessage = styled.span`
