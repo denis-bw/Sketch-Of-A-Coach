@@ -1,14 +1,45 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React from 'react';
+import {
+  Container,
+  Content,
+  Title,
+  Description,
+  ButtonsContainer,
+  StyledLink,
+  Logo,
+  Header
+} from './HomePage.styled';
+import BtnTheme from '../../components/BtnTheme/BtnTheme';
 
-const  HomePage = () => {
+const HomePage = () => {
   return (
-      <div> <p> HomePage</p>
+    <>
+      <Header>
+        <Logo to={"/"}>Coach's Sketch</Logo> 
+        <BtnTheme/>
+      </Header>
+    
+    <Container>
+      <Content>
+          
+        <Title>Ласкаво просимо!</Title>
+        <Description>
+          Приєднуйтесь до нашої спільноти та відкривайте для себе нові можливості. 
+          Почніть свою подорож прямо зараз!
+        </Description>
+        
+        <ButtonsContainer>
+          <StyledLink to="/login" className="secondary">
+            Увійти
+          </StyledLink>
+          <StyledLink to="/register" className="primary">
+            Реєстрація
+          </StyledLink>
+        </ButtonsContainer>
+      </Content>
+      </Container>
+  </>
+  );
+};
 
-           <Link to="/login"> Log in </Link>
-          <Link to="/register">Sign up</Link>
-    </div>
-  )
-}
-
-export default  HomePage
+export default HomePage;

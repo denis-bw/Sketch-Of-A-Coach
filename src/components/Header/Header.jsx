@@ -1,37 +1,16 @@
 import React from 'react';
-import  { useEffect } from 'react';
 import { 
   HeaderContainer, 
-  ToggleButton, 
-  ThemeIcon, 
   BurgerButton, 
   Title, 
   ContanerSettings, 
   TexeName,
-  MoonIcon,
-  SunIcon,
   MenuIcon
 } from './Header.styled';
-import { toggleTheme, selectTheme } from '../../redux/theme/themeSlice.js';
-import { useDispatch, useSelector } from 'react-redux';
+import BtnTheme from '../BtnTheme/BtnTheme';
 import { ReactComponent as SettingsIcon } from '../../assets/SettingsIcon.svg';
 
 const Header = ({ toggleSidebar, isMobile }) => {
- 
-  const dispatch = useDispatch();
-  const theme = useSelector(selectTheme);
-  const isDarkMode = theme === 'dark';
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      dispatch(toggleTheme(savedTheme));
-    }
-  }, [dispatch]);
-
-  const handleToggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    dispatch(toggleTheme(newTheme));
-  };
   
   return (
     <HeaderContainer>
@@ -41,11 +20,7 @@ const Header = ({ toggleSidebar, isMobile }) => {
           <Title>TEXTФ ФФФафіваф івафіваів</Title>
           <ContanerSettings>
             <SettingsIcon style={{ width: '20px', height: '20px' }}  />
-            <ToggleButton  onClick={handleToggleTheme}>
-              <ThemeIcon $isDarkMode={isDarkMode}>
-                {isDarkMode ? <SunIcon /> : <MoonIcon />}
-              </ThemeIcon>
-            </ToggleButton>
+            <BtnTheme/>
             <TexeName>Nadiia</TexeName>
             <img
               src="/api/placeholder/32/32"
@@ -60,11 +35,7 @@ const Header = ({ toggleSidebar, isMobile }) => {
           <Title>TEXTФ ФФФафіваф івафіваів</Title>
           <ContanerSettings>
             <SettingsIcon style={{ width: '20px', height: '20px' }}  />
-            <ToggleButton onClick={handleToggleTheme}>
-              <ThemeIcon $isDarkMode={isDarkMode}>
-                {isDarkMode ? <SunIcon /> : <MoonIcon />}
-              </ThemeIcon>
-            </ToggleButton>
+            <BtnTheme/>
             <TexeName>Nadiia</TexeName>
             <img
               src="/api/placeholder/32/32"

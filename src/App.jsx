@@ -41,11 +41,11 @@ import Loader from './components/Loader/Loader';
 
 
 
-const test = import.meta.env.VITE_API_TEST;
+// const test = import.meta.env.VITE_API_TEST;
 
 function App() {
    
-  console.log(test);
+  // console.log(test);
   return (
     <Suspense fallback={<Loader />}>
     <Routes>
