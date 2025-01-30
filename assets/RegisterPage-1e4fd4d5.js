@@ -1,4 +1,4 @@
-import{d as r,N as h,a as w,b as $,r as p,j as o,B as y,f as k}from"./index-5349a206.js";const v=r.div`
+import{d as o,N as h,a as $,b as j,r as x,j as r,B as y,f as v}from"./index-cbb0e3d2.js";const k=o.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,7 +9,7 @@ import{d as r,N as h,a as w,b as $,r as p,j as o,B as y,f as k}from"./index-5349
   @media (max-width: 640px) {
     padding: 20px; 
   }
-`,C=r.div`
+`,G=o.div`
   width: 100%;
   max-width: 28rem;
   background-color: ${({theme:e})=>e.ContainerBGColor};
@@ -20,29 +20,29 @@ import{d as r,N as h,a as w,b as $,r as p,j as o,B as y,f as k}from"./index-5349
   @media (max-width: 480px) {
     padding: 1.5rem;
   }
-`,G=r.h1`
+`,C=o.h1`
   font-size: 1.75rem;
   color: ${({theme:e})=>e.textBlack};
   text-align: center;
   margin-bottom: 2rem;
   font-weight: 600;
-`,B=r.form`
+`,B=o.form`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-`,l=r.div`
+`,l=o.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   position: relative;
-`,d=r.label`
+`,d=o.label`
   font-size: 0.875rem;
   font-weight: 500;
   color: ${({theme:e})=>e.textBlack};
-`,c=r.input`
+`,c=o.input`
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 1.5px solid ${({theme:e})=>e.textGray};
+  border: 1.6px solid ${({theme:e})=>e.textGray};
   border-radius: 0.5rem;
   font-size: 1rem;
   background-color: ${({theme:e})=>e.ContainerBGColor};
@@ -51,25 +51,28 @@ import{d as r,N as h,a as w,b as $,r as p,j as o,B as y,f as k}from"./index-5349
   
   &:focus {
     outline: none;
-    border-color: ${({theme:e})=>e.greenMain};
-    box-shadow: 0 0 0 2px ${({theme:e})=>e.lightGreen};
+    border-color: ${({theme:e})=>e.lightGreen};
+    box-shadow: 0 0 0 2px ${({theme:e})=>`rgba(${parseInt(e.lightGreen.slice(1,3),16)}, ${parseInt(e.lightGreen.slice(3,5),16)}, ${parseInt(e.lightGreen.slice(5,7),16)}, 0.5)`};
   }
   
   &::placeholder {
     color: ${({theme:e})=>e.textGray};
   }
 
-  ${({error:e})=>e&&`
-    border-color: ${({theme:t})=>t.red};
-    &:focus {
-      box-shadow: 0 0 0 2px rgba(251, 69, 102, 0.2);
-    }
-  `}
-`;r.span`
+  &:valid {
+    border-color:  ${({theme:e})=>e.lightGreen}
+  }
+  &:not(:placeholder-shown):invalid  {
+    border-color: ${({theme:e})=>e.red};
+  }
+  &:focus:not(:placeholder-shown):invalid{
+     box-shadow: 0 0 0 2px ${({theme:e})=>`rgba(${parseInt(e.red.slice(1,3),16)}, ${parseInt(e.red.slice(3,5),16)}, ${parseInt(e.red.slice(5,7),16)}, 0.5)`};
+  }
+`;o.span`
   color: ${({theme:e})=>e.red};
   font-size: 0.75rem;
   margin-top: 0.25rem;
-`;const z=r.button`
+`;const z=o.button`
   width: 100%;
   padding: 0.875rem;
   background-color: ${({theme:e})=>e.greenMain};
@@ -94,12 +97,12 @@ import{d as r,N as h,a as w,b as $,r as p,j as o,B as y,f as k}from"./index-5349
     opacity: 0.7;
     cursor: not-allowed;
   }
-`,F=r.p`
+`,L=o.p`
   text-align: center;
   margin-top: 1.5rem;
   color: ${({theme:e})=>e.textGray};
   font-size: 0.875rem;
-`,S=r(h)`
+`,F=o(h)`
   color: ${({theme:e})=>e.greenMain};
   text-decoration: none;
   font-weight: 500;
@@ -109,23 +112,23 @@ import{d as r,N as h,a as w,b as $,r as p,j as o,B as y,f as k}from"./index-5349
     color: ${({theme:e})=>e.darkGreen};
     text-decoration: underline;
   }
-`,L=r.div`
+`,I=o.div`
   padding: 0;
   margin: 0.5rem 0;
   font-size: 0.75rem;
   color: ${({theme:e})=>e.textGray};
-`,q=r.li`
+`,S=o.li`
   display: flex;
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.25rem;
   
   svg {
-    color: ${({isValid:e,theme:t})=>e?t.greenMain:t.textGray};
+    color: ${({isValid:e,theme:n})=>e?n.greenMain:n.textGray};
   }
-`,E=r.div`
+`,q=o.div`
   color: ${({theme:e})=>e.red};
-`,M=r.button`
+`,E=o.button`
   position: absolute;
   top: 50%;
   right: 10px;
@@ -139,15 +142,15 @@ import{d as r,N as h,a as w,b as $,r as p,j as o,B as y,f as k}from"./index-5349
   &:focus {
     outline: none;
   }
-`,P=r.header`
+`,P=o.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   background-color:  ${({theme:e})=>e.ContainerBGColor};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-`,R=r(h)`
+`,R=o(h)`
   font-size: 24px;
   font-weight: bold;
   color:  ${({theme:e})=>e.greenMain};
-`,D=()=>{const e=w(),{error:t,isLoading:m}=$(n=>n.auth),[x,g]=p.useState(!1),[a,u]=p.useState({username:"",email:"",password:""}),i=n=>{const{name:s,value:f}=n.target;u(j=>({...j,[s]:f}))},b=n=>{n.preventDefault(),e(k(a)).then(()=>{}).catch(s=>{console.error("Реєстрація не вдалася: ",s)})};return o.jsxs(o.Fragment,{children:[o.jsxs(P,{children:[o.jsx(R,{to:"/",children:"Coach's Sketch"}),o.jsx(y,{})]}),o.jsx(v,{children:o.jsxs(C,{children:[o.jsx(G,{children:"Реєстрація"}),o.jsxs(B,{onSubmit:b,children:[o.jsxs(l,{children:[o.jsx(d,{htmlFor:"name",children:"Ім'я"}),o.jsx(c,{id:"name",name:"username",type:"text",value:a.name,onChange:i,minLength:3,placeholder:"Введіть ім'я",required:!0})]}),o.jsxs(l,{children:[o.jsx(d,{htmlFor:"email",children:"Email"}),o.jsx(c,{id:"email",name:"email",type:"email",value:a.email,onChange:i,placeholder:"Введіть Email",required:!0})]}),o.jsxs(l,{children:[o.jsx(d,{htmlFor:"password",children:"Пароль"}),o.jsxs("div",{style:{position:"relative"},children:[o.jsx(c,{id:"password",name:"password",type:x?"text":"password",value:a.password,onChange:i,placeholder:"Введіть пароль",required:!0,minLength:6}),o.jsx(M,{type:"button",onClick:()=>g(n=>!n),children:x?"Сховати":"Показати"})]}),o.jsx(L,{children:o.jsx(q,{children:"Мінімум 6 символів"})})]}),o.jsx(z,{type:"submit",disabled:m,children:m?"Завантаження...":"Зареєструватися"}),t&&o.jsxs(E,{children:[" ",t]})]}),o.jsxs(F,{children:["Вже маєте акаунт? ",o.jsx(S,{to:"/login",children:"Увійти"})]})]})})]})};export{D as default};
+`,D=()=>{const e=$(),{error:n,isLoading:m}=j(t=>t.auth),[p,g]=x.useState(!1),[a,u]=x.useState({username:"",email:"",password:""}),i=t=>{const{name:s,value:f}=t.target;u(w=>({...w,[s]:f}))},b=t=>{t.preventDefault(),e(v(a)).then(()=>{}).catch(s=>{console.error("Реєстрація не вдалася: ",s)})};return r.jsxs(r.Fragment,{children:[r.jsxs(P,{children:[r.jsx(R,{to:"/",children:"Coach's Sketch"}),r.jsx(y,{})]}),r.jsx(k,{children:r.jsxs(G,{children:[r.jsx(C,{children:"Реєстрація"}),r.jsxs(B,{onSubmit:b,children:[r.jsxs(l,{children:[r.jsx(d,{htmlFor:"name",children:"Ім'я"}),r.jsx(c,{id:"name",name:"username",type:"text",value:a.name,onChange:i,minLength:3,maxLength:25,placeholder:"Введіть ім'я",required:!0})]}),r.jsxs(l,{children:[r.jsx(d,{htmlFor:"email",children:"Email"}),r.jsx(c,{id:"email",name:"email",type:"email",value:a.email,onChange:i,maxLength:40,placeholder:"Введіть Email",required:!0})]}),r.jsxs(l,{children:[r.jsx(d,{htmlFor:"password",children:"Пароль"}),r.jsxs("div",{style:{position:"relative"},children:[r.jsx(c,{id:"password",name:"password",type:p?"text":"password",value:a.password,onChange:i,placeholder:"Введіть пароль",required:!0,minLength:6,maxLength:20}),r.jsx(E,{type:"button",onClick:()=>g(t=>!t),children:p?"Сховати":"Показати"})]}),r.jsx(I,{children:r.jsx(S,{children:"Мінімум 6 символів"})})]}),r.jsx(z,{type:"submit",disabled:m,children:m?"Завантаження...":"Зареєструватися"}),n&&r.jsxs(q,{children:[" ",n]})]}),r.jsxs(L,{children:["Вже маєте акаунт? ",r.jsx(F,{to:"/login",children:"Увійти"})]})]})})]})};export{D as default};
