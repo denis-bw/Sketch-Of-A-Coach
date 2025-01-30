@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 axios.defaults.baseURL = BASE_URL
-
+console.log(BASE_URL)
 const token = {
     setToken(token) {
         axios.defaults.headers.Authorization = `Bearer ${token}`;
