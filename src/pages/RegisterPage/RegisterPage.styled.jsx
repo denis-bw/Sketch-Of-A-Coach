@@ -64,25 +64,31 @@ export const Input = styled.input`
   color: ${({ theme }) => theme.textBlack};
   transition: all 0.2s ease-in-out;
   
-  &:focus {
+&:focus {
     outline: none;
     border-color: ${({ theme }) => theme.lightGreen};
     box-shadow: 0 0 0 2px ${({ theme }) => `rgba(${parseInt(theme.lightGreen.slice(1, 3), 16)}, ${parseInt(theme.lightGreen.slice(3, 5), 16)}, ${parseInt(theme.lightGreen.slice(5, 7), 16)}, 0.5)`};
-  }
-  
-  &::placeholder {
-    color: ${({ theme }) => theme.textGray};
-  }
+}
 
-  &:valid {
-    border-color:  ${({ theme }) => theme.lightGreen}
-  }
-  &:not(:placeholder-shown):invalid  {
+&::placeholder {
+    color: ${({ theme }) => theme.textGray};
+}
+
+&:-webkit-autofill {
+    border-color: ${({ theme }) => theme.lightGreen};
+}
+
+&:valid {
+    border-color: ${({ theme }) => theme.lightGreen};
+}
+
+&:not(:placeholder-shown):not(:-webkit-autofill):invalid {
     border-color: ${({ theme }) => theme.red};
-  }
-  &:focus:not(:placeholder-shown):invalid{
-     box-shadow: 0 0 0 2px ${({ theme }) => `rgba(${parseInt(theme.red.slice(1, 3), 16)}, ${parseInt(theme.red.slice(3, 5), 16)}, ${parseInt(theme.red.slice(5, 7), 16)}, 0.5)`};
-  }
+}
+
+&:focus:not(:placeholder-shown):not(:-webkit-autofill):invalid {
+    box-shadow: 0 0 0 2px ${({ theme }) => `rgba(${parseInt(theme.red.slice(1, 3), 16)}, ${parseInt(theme.red.slice(3, 5), 16)}, ${parseInt(theme.red.slice(5, 7), 16)}, 0.5)`};
+}
 `;
 
 export const ErrorMessage = styled.span`
@@ -106,7 +112,6 @@ export const RegisterButton = styled.button`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 0.5rem;
 
   &:hover {
     background-color: ${({ theme }) => theme.darkGreen};
@@ -139,16 +144,14 @@ export const StyledLink = styled(NavLink)`
 
 export const PasswordRequirement = styled.div`
   padding: 0;
-  margin: 0.5rem 0;
+  margin-top: 0.5rem;
   font-size: 0.75rem;
   color: ${({ theme }) => theme.textGray};
 `;
 
-export const RequirementItem = styled.li`
+export const RequirementItem = styled.p`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.25rem;
   
   svg {
     color: ${({ isValid, theme }) => 

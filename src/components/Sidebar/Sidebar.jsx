@@ -5,7 +5,13 @@ import { ReactComponent as MyAccount } from '../../assets/MyAccount.svg';
 import { ReactComponent as TeamIcon } from '../../assets/TeamIcon.svg';
 import { ReactComponent as StatisticsIcon } from '../../assets/StatisticsIcon.svg';
 import { ReactComponent as PaymentsIcon } from '../../assets/PaymentsIcon.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchLogout } from '../../redux/auth/authOperations';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+  
 import {
   SidebarContainer,
   Logo,
@@ -25,6 +31,24 @@ import {
 } from './Sidebar.styled';
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
+  const dispatch = useDispatch();
+  const {error, isLoading} = useSelector((state) => state.auth);
+    
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+      console.log("errrrrrrrrrrrrrror")
+    }
+  }, [error]);
+  
+  const handleLogout = async () => {
+    try {
+      await dispatch(fetchLogout()).unwrap();
+    } catch (error) {
+      console.error('Помилка виходу:', error);
+    }
+  };
+
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const location = useLocation();
@@ -99,6 +123,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   };
 
   return (
+    <><ToastContainer />
     <SidebarContainer isOpen={isOpen}>
       <LogoContainer>
         <Logo onClick={handleMenuItemClick} to={"/my-account"}>Coach's Sketch</Logo>
@@ -156,11 +181,12 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         })}
       </Navigation>
 
-      <LogoutButton >
+      <LogoutButton onClick={handleLogout} disabled={isLoading}>
         <LogoutIcon styled=' width: 100%, height: 100%' />
-        <span>Вийти</span>
+        <span>{isLoading ? 'Вихід ...' : 'Вийти'}</span>
       </LogoutButton>
-    </SidebarContainer>
+      </SidebarContainer>
+    </>
   );
 };
 

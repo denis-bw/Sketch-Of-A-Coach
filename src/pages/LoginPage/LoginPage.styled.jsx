@@ -10,7 +10,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.mainBGColor};
   transition: all 0.2s ease-in-out;
   @media (max-width: 640px) {
-    padding: 20px; 
+    padding: 40px; 
   }
 `;
 
@@ -56,22 +56,43 @@ export const Label = styled.label`
 export const Input = styled.input`
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 1.5px solid ${({ theme }) => theme.textGray};
+  border: 1.6px solid ${({ theme }) => theme.textGray};
   border-radius: 0.5rem;
   font-size: 1rem;
   background-color: ${({ theme }) => theme.ContainerBGColor};
   color: ${({ theme }) => theme.textBlack};
   transition: all 0.2s ease-in-out;
   
-  &:focus {
+&:focus {
     outline: none;
-    border-color: ${({ theme }) => theme.greenMain};
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.lightGreen};
-  }
-  
-  &::placeholder {
+    border-color: ${({ theme }) => theme.lightGreen};
+    box-shadow: 0 0 0 2px ${({ theme }) => `rgba(${parseInt(theme.lightGreen.slice(1, 3), 16)}, ${parseInt(theme.lightGreen.slice(3, 5), 16)}, ${parseInt(theme.lightGreen.slice(5, 7), 16)}, 0.5)`};
+}
+
+&::placeholder {
     color: ${({ theme }) => theme.textGray};
-  }
+}
+
+&:-webkit-autofill,
+&:-webkit-autofill:hover,
+&:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 30px ${({ theme }) => theme.ContainerBGColor} inset;
+  -webkit-text-fill-color: ${({ theme }) => theme.textBlack};
+  transition: background-color 5000s ease-in-out 0s;
+  border-color: ${({ theme }) => theme.lightGreen};
+}
+
+&:valid {
+    border-color: ${({ theme }) => theme.lightGreen};
+}
+
+&:not(:placeholder-shown):not(:-webkit-autofill):invalid {
+    border-color: ${({ theme }) => theme.red};
+}
+
+&:focus:not(:placeholder-shown):not(:-webkit-autofill):invalid {
+    box-shadow: 0 0 0 2px ${({ theme }) => `rgba(${parseInt(theme.red.slice(1, 3), 16)}, ${parseInt(theme.red.slice(3, 5), 16)}, ${parseInt(theme.red.slice(5, 7), 16)}, 0.5)`};
+}
 `;
 
 export const LoginButton = styled.button`
@@ -146,4 +167,24 @@ export const Logo = styled(NavLink)`
   font-size: 24px;
   font-weight: bold;
   color:  ${({ theme }) => theme.greenMain};
+`;
+
+export const ErrorText = styled.div`
+  color: ${({ theme }) => theme.red};
+`;
+
+export const TogglePasswordButton = styled.button`
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  color: ${({ theme }) => theme.iconColor};
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 `;

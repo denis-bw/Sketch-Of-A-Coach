@@ -2,6 +2,10 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
 
+  * {
+    caret-color: ${({ theme }) => theme.mode === 'dark' ? theme.textWhite : theme.textBlack};
+  }
+
   html, body {
     font-family: 'Inter Tight', sans-serif;
     padding: 0;

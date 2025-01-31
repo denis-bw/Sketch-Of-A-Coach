@@ -17,12 +17,10 @@ export const fetchAuthorizationUser = createAsyncThunk(
   'userDetails/fetchAuthorizationUser',
   async (dataUser, thunkApi) => {
       try {
-        console.log(dataUser)
       const { data } = await axios.post('/users/register', dataUser);
       token.setToken(data.token); 
       return data;
     } catch (err) {
-    console.log(thunkApi.rejectWithValue(err),"payload")
     
     if (!err.response) {
         return thunkApi.rejectWithValue('Сервер не відповідає. Спробуйте пізніше.');
@@ -33,25 +31,40 @@ export const fetchAuthorizationUser = createAsyncThunk(
         return thunkApi.rejectWithValue('Користувач з таким email вже існує.');
     }
     if (status === 400) {
-        return thunkApi.rejectWithValue('Некоректно заповнена форма.');
+        return thunkApi.rejectWithValue('Некоректно введені дані.');
     }
-
       return thunkApi.rejectWithValue('Щось пішло не так. Спробуйте ще раз.');
-    
     }
   }
 );
 
-export const fetchLogUser = createAsyncThunk('userDetails/fetchLogUser',
-    async (dataUser, thunkApi) => {
-        try {   
-            const { data } = await axios.post('/users/login', dataUser);
-            token.setToken(data.token);
-            return data;
-        } catch (err) { 
-            return thunkApi.rejectWithValue(err.message);  // Виправлено помилку тут
-        }
-});
+export const fetchLoginUser = createAsyncThunk(
+  'userDetails/fetchLoginUser',
+  async (dataUser, thunkApi) => {
+    try {   
+      const { data } = await axios.post('/users/login', dataUser);
+      token.setToken(data.token);
+      return data;
+    } catch (err) { 
+
+      if (!err.response) {
+        return thunkApi.rejectWithValue('Сервер не відповідає. Спробуйте пізніше.');
+      }
+
+      const status = err.response.status;
+      switch (status) {
+        case ( 400 || 401):
+          return thunkApi.rejectWithValue('Невірний email або пароль. Перевірте дані та спробуйте ще раз.');
+        case 403:
+          return thunkApi.rejectWithValue('Доступ заборонено. Можливо, ваш акаунт заблоковано.');
+        case 500:
+          return thunkApi.rejectWithValue('Помилка сервера. Будь ласка, спробуйте пізніше.');
+        default:
+          return thunkApi.rejectWithValue('Щось пішло не так. Спробуйте ще раз.');
+      }
+    }
+  }
+);
 
 export const fetchLogout = createAsyncThunk('userDetails/fetchLogIn',
     async (_, thunkApi) => {
@@ -59,13 +72,23 @@ export const fetchLogout = createAsyncThunk('userDetails/fetchLogIn',
             await axios.post('/users/logout');
             token.unsetToken();
         } catch (err) {  
-            return thunkApi.rejectWithValue(err.message);  // Виправлено помилку тут
+                if (err.response) {
+                    if (err.response.status === 401) {
+                    token.unsetToken();
+                    return thunkApi.rejectWithValue('Ви вже вийшли з акаунту.'); 
+                }
+                if (err.response.status === 404) {
+                    return thunkApi.rejectWithValue('Сервер не знайдено.');  
+                }
+            }
+ 
+            return thunkApi.rejectWithValue('Помилка при виході з акаунту. Спробуйте ще раз.');
         }
-    });
+});
 
 export const refreshUser = createAsyncThunk('userDetails/refreshUser',
     async (_, thunkApi) => {
-        const { auth } = thunkApi.getState();  // Оновлено для узгодженості з назвою слайсу
+        const { auth } = thunkApi.getState(); 
         if (!auth.token) throw new Error('Cannot read properties of undefined reading token');
         token.setToken(auth.token);
 
@@ -74,6 +97,6 @@ export const refreshUser = createAsyncThunk('userDetails/refreshUser',
             return res.data;
         } catch (error) {
             console.log(error, 'err');
-            return thunkApi.rejectWithValue(error.message);  // Виправлено помилку тут
+            return thunkApi.rejectWithValue(error.message);  
         }
     });

@@ -40,12 +40,9 @@ import PrivateRoute from './components/PrivateRoute.jsx';
 import Loader from './components/Loader/Loader';
 
 
-
-// const test = import.meta.env.VITE_API_TEST;
-
 function App() {
-   
-  // console.log(test);
+
+  
   return (
     <Suspense fallback={<Loader />}>
     <Routes>

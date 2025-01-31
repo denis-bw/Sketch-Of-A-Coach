@@ -121,6 +121,11 @@ export const LogoutButton = styled.button`
     background-color: ${(p) => p.theme.darkGreen};
   }
 
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
   span {
     margin-left: 0.75rem;
   }
