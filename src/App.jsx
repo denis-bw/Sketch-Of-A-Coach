@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
-import React, { useState, Suspense, lazy } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 
 const MyAccount = lazy(() => import('./pages/MyAccount/MyAccount'));
 const TeamsList = lazy(() => import('./pages/MyTeams/TeamsList/TeamsList'));
@@ -38,10 +38,18 @@ const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 import RestrictedRoute from './components/RestrictedRoute.jsx'
 import PrivateRoute from './components/PrivateRoute.jsx'; 
 import Loader from './components/Loader/Loader';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshUser } from './redux/auth/authOperations';
 
 function App() {
+   const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
 
+  useEffect(() => {
+    if (token) {
+      dispatch(refreshUser());
+    }
+  }, [dispatch, token]);
   
   return (
     <Suspense fallback={<Loader />}>

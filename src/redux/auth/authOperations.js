@@ -86,17 +86,24 @@ export const fetchLogout = createAsyncThunk('userDetails/fetchLogIn',
         }
 });
 
-export const refreshUser = createAsyncThunk('userDetails/refreshUser',
-    async (_, thunkApi) => {
-        const { auth } = thunkApi.getState(); 
-        if (!auth.token) throw new Error('Cannot read properties of undefined reading token');
-        token.setToken(auth.token);
+export const refreshUser = createAsyncThunk(
+  'userDetails/refreshUser',
+  async (_, thunkApi) => {
+    const { auth } = thunkApi.getState(); 
+    
+    if (!auth.token) {
+      return thunkApi.rejectWithValue('No token found');
+    }
 
-        try {
-            const res = await axios.get('/users/current');
-            return res.data;
-        } catch (error) {
-            console.log(error, 'err');
-            return thunkApi.rejectWithValue(error.message);  
-        }
-    });
+    try {
+      token.setToken(auth.token);
+      const res = await axios.get('/users/current');
+      return res.data;
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        return thunkApi.rejectWithValue('Час сеансу закінчився. Будь ласка, увійдіть ще раз.');
+      }
+      return thunkApi.rejectWithValue(error.message);  
+    }
+  }
+);

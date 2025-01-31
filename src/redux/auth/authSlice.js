@@ -62,14 +62,20 @@ const authSlice = createSlice({
     })
     .addCase(refreshUser.pending, (state) => {
       state.error = null;
+      state.isLoading = true;
     })
     .addCase(refreshUser.fulfilled, (state, action) => {
-      state.user.name = action.payload.name;
       state.user.email = action.payload.email;
+      state.user.username = action.payload.username;
       state.isLoggedIn = true;
+      state.isLoading = false;
     })
     .addCase(refreshUser.rejected, (state, action) => {
-      state.error = action.error.message || 'Не вдалося оновити дані користувача.';
+      state.token = null;
+      state.isLoggedIn = false;
+      state.user = { email: null, username: null };
+      state.error = action.payload || 'Не вдалося оновити дані користувача.';
+      state.isLoading = false;
     }),
 });
 
