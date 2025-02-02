@@ -12,7 +12,11 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+  clearError: (state) => {
+      state.error = null; 
+  },
+  },
   extraReducers: (builder) => builder
     .addCase(fetchAuthorizationUser.pending, (state) => {
       state.error = null;
@@ -59,6 +63,7 @@ const authSlice = createSlice({
       console.log(action)
       state.error = action.payload || 'Сталася непередбачена помилка при виході.';
       state.isLoading = false;
+      state.isLoggedIn = false;
     })
     .addCase(refreshUser.pending, (state) => {
       state.error = null;
@@ -80,3 +85,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+export const { clearError } = authSlice.actions;

@@ -13,16 +13,33 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/authSlice.js';
 
+
+import { createTransform } from 'redux-persist';
+
+const authTransform = createTransform(
+  (inboundState) => {
+    const { isLoading,isLoggedIn, error, ...persistedState } = inboundState;
+    return persistedState;
+  },
+  (outboundState) => {
+    return { ...outboundState, isLoading: false, isLoggedIn: false ,error: null };
+  },
+  { whitelist: ['auth'] }
+);
+
 const rootReducer = combineReducers({
   theme: themeReducer,
   auth: authReducer,
 });
 
+
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth'],
+  transforms: [authTransform],
 };
+
+
 
 export const store = configureStore({
     reducer:  persistReducer(persistConfig, rootReducer),

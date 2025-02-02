@@ -50,7 +50,7 @@ export const fetchLoginUser = createAsyncThunk(
       if (!err.response) {
         return thunkApi.rejectWithValue('Сервер не відповідає. Спробуйте пізніше.');
       }
-
+     
       const status = err.response.status;
       switch (status) {
         case ( 400 || 401):
@@ -59,6 +59,8 @@ export const fetchLoginUser = createAsyncThunk(
           return thunkApi.rejectWithValue('Доступ заборонено. Можливо, ваш акаунт заблоковано.');
         case 500:
           return thunkApi.rejectWithValue('Помилка сервера. Будь ласка, спробуйте пізніше.');
+        case 429:
+          return thunkApi.rejectWithValue(err.response.data.message);
         default:
           return thunkApi.rejectWithValue('Щось пішло не так. Спробуйте ще раз.');
       }

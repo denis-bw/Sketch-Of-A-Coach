@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLoginUser } from '../../redux/auth/authOperations';
+import { clearError } from '../../redux/auth/authSlice'; 
 
 import {
   Container,
@@ -32,6 +33,10 @@ const LoginPage = () => {
     password: '',
   });
 
+  useEffect(() => {
+    if (error) {dispatch(clearError());}
+  }, [dispatch]);
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAuthorizationUser } from '../../redux/auth/authOperations';  
 import {
@@ -20,6 +20,7 @@ import {
   Logo,
 } from './RegisterPage.styled';
 import BtnTheme from '../../components/BtnTheme/BtnTheme';
+import { clearError } from '../../redux/auth/authSlice'; 
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,10 @@ const RegisterPage = () => {
     password: ''
   });
 
+  useEffect(() => {
+    if (error) {dispatch(clearError());}
+  }, [dispatch]);
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
