@@ -1,4 +1,4 @@
-import{d as r,N as a,a as $,b as k,r as p,j as o,B as j,c as y}from"./index-90425674.js";const v=r.div`
+import{d as r,N as l,a as $,b as k,r as s,c as j,j as o,B as y,e as v}from"./index-b51b883a.js";const G=r.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,9 +7,9 @@ import{d as r,N as a,a as $,b as k,r as p,j as o,B as j,c as y}from"./index-9042
   background-color: ${({theme:e})=>e.mainBGColor};
   transition: all 0.2s ease-in-out;
   @media (max-width: 640px) {
-    padding: 40px; 
+    padding-top: 40px; 
   }
-`,G=r.div`
+`,C=r.div`
   width: 100%;
   max-width: 28rem;
   background-color: ${({theme:e})=>e.ContainerBGColor};
@@ -20,13 +20,13 @@ import{d as r,N as a,a as $,b as k,r as p,j as o,B as j,c as y}from"./index-9042
   @media (max-width: 480px) {
     padding: 1.5rem;
   }
-`,C=r.h1`
+`,B=r.h1`
   font-size: 1.75rem;
   color: ${({theme:e})=>e.textBlack};
   text-align: center;
   margin-bottom: 2rem;
   font-weight: 600;
-`,B=r.form`
+`,L=r.form`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -78,7 +78,7 @@ import{d as r,N as a,a as $,b as k,r as p,j as o,B as j,c as y}from"./index-9042
 &:focus:not(:placeholder-shown):not(:-webkit-autofill):invalid {
     box-shadow: 0 0 0 2px ${({theme:e})=>`rgba(${parseInt(e.red.slice(1,3),16)}, ${parseInt(e.red.slice(3,5),16)}, ${parseInt(e.red.slice(5,7),16)}, 0.5)`};
 }
-`,L=r.button`
+`,z=r.button`
   width: 100%;
   padding: 0.875rem;
   background-color: ${({theme:e})=>e.greenMain};
@@ -103,12 +103,12 @@ import{d as r,N as a,a as $,b as k,r as p,j as o,B as j,c as y}from"./index-9042
     opacity: 0.7;
     cursor: not-allowed;
   }
-`,z=r.p`
+`,F=r.p`
   text-align: center;
   margin-top: 1.5rem;
   color: ${({theme:e})=>e.textGray};
   font-size: 0.875rem;
-`,F=r(a)`
+`,S=r(l)`
   color: ${({theme:e})=>e.greenMain};
   text-decoration: none;
   font-weight: 500;
@@ -118,7 +118,7 @@ import{d as r,N as a,a as $,b as k,r as p,j as o,B as j,c as y}from"./index-9042
     color: ${({theme:e})=>e.darkGreen};
     text-decoration: underline;
   }
-`,S=r(a)`
+`,I=r(l)`
   color: ${({theme:e})=>e.textGray};
   text-decoration: none;
   font-size: 0.875rem;
@@ -129,14 +129,14 @@ import{d as r,N as a,a as $,b as k,r as p,j as o,B as j,c as y}from"./index-9042
   &:hover {
     color: ${({theme:e})=>e.greenMain};
   }
-`,I=r.header`
+`,E=r.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   background-color:  ${({theme:e})=>e.ContainerBGColor};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-`,P=r(a)`
+`,P=r(l)`
   font-size: 24px;
   font-weight: bold;
   color:  ${({theme:e})=>e.greenMain};
@@ -156,4 +156,4 @@ import{d as r,N as a,a as $,b as k,r as p,j as o,B as j,c as y}from"./index-9042
   &:focus {
     outline: none;
   }
-`,M=()=>{const e=$(),{error:s,isLoading:l}=k(t=>t.auth),[d,m]=p.useState(!1),[n,u]=p.useState({email:"",password:""}),c=t=>{const{name:i,value:f}=t.target;u(w=>({...w,[i]:f}))},b=t=>{t.preventDefault(),e(y(n)).catch(i=>{console.error("Помилка входу: ",i)})};return o.jsxs(o.Fragment,{children:[o.jsxs(I,{children:[o.jsx(P,{to:"/",children:"Coach's Sketch"}),o.jsx(j,{})]}),o.jsx(v,{children:o.jsxs(G,{children:[o.jsx(C,{children:"Вхід"}),o.jsxs(B,{onSubmit:b,children:[o.jsxs(x,{children:[o.jsx(h,{htmlFor:"email",children:"Email"}),o.jsx(g,{id:"email",name:"email",type:"email",value:n.email,onChange:c,maxLength:40,placeholder:"Введіть email",required:!0})]}),o.jsxs(x,{children:[o.jsx(h,{htmlFor:"password",children:"Пароль"}),o.jsxs("div",{style:{position:"relative"},children:[o.jsx(g,{id:"password",name:"password",type:d?"text":"password",value:n.password,onChange:c,placeholder:"Введіть пароль",required:!0,minLength:6,maxLength:20}),o.jsx(D,{type:"button",onClick:()=>m(t=>!t),children:d?"Сховати":"Показати"})]})]}),o.jsx(S,{to:"/forgot-password",children:"Забули пароль?"}),o.jsx(L,{type:"submit",disabled:l,children:l?"Завантаження...":"Увійти"}),s&&o.jsx(T,{children:s})]}),o.jsxs(z,{children:["Немає акаунту? ",o.jsx(F,{to:"/register",children:"Зареєструватися"})]})]})})]})};export{M as default};
+`,q=()=>{const e=$(),{error:n,isLoading:d}=k(t=>t.auth),[c,m]=s.useState(!1),[i,u]=s.useState({email:"",password:""});s.useEffect(()=>{n&&e(j())},[e]);const p=t=>{const{name:a,value:f}=t.target;u(w=>({...w,[a]:f}))},b=t=>{t.preventDefault(),e(v(i)).catch(a=>{console.error("Помилка входу: ",a)})};return o.jsxs(o.Fragment,{children:[o.jsxs(E,{children:[o.jsx(P,{to:"/",children:"Coach's Sketch"}),o.jsx(y,{})]}),o.jsx(G,{children:o.jsxs(C,{children:[o.jsx(B,{children:"Вхід"}),o.jsxs(L,{onSubmit:b,children:[o.jsxs(x,{children:[o.jsx(h,{htmlFor:"email",children:"Email"}),o.jsx(g,{id:"email",name:"email",type:"email",value:i.email,onChange:p,maxLength:40,placeholder:"Введіть email",required:!0})]}),o.jsxs(x,{children:[o.jsx(h,{htmlFor:"password",children:"Пароль"}),o.jsxs("div",{style:{position:"relative"},children:[o.jsx(g,{id:"password",name:"password",type:c?"text":"password",value:i.password,onChange:p,placeholder:"Введіть пароль",required:!0,minLength:6,maxLength:20}),o.jsx(D,{type:"button",onClick:()=>m(t=>!t),children:c?"Сховати":"Показати"})]})]}),o.jsx(I,{to:"/forgot-password",children:"Забули пароль?"}),o.jsx(z,{type:"submit",disabled:d,children:d?"Завантаження...":"Увійти"}),n&&o.jsx(T,{children:n})]}),o.jsxs(F,{children:["Немає акаунту? ",o.jsx(S,{to:"/register",children:"Зареєструватися"})]})]})})]})};export{q as default};
