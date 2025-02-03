@@ -1,4 +1,4 @@
-import{d as o,N as h,a as $,b as j,r as l,c as y,j as r,B as k,f as v}from"./index-b51b883a.js";const G=o.div`
+import{d as o,N as b,a as v,b as y,r as d,c as k,j as r,B as G,f as C}from"./index-7717be91.js";const F=o.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,7 +9,7 @@ import{d as o,N as h,a as $,b as j,r as l,c as y,j as r,B as k,f as v}from"./ind
   @media (max-width: 640px) {
     padding: 20px; 
   }
-`,C=o.div`
+`,B=o.div`
   width: 100%;
   max-width: 28rem;
   background-color: ${({theme:e})=>e.ContainerBGColor};
@@ -20,26 +20,26 @@ import{d as o,N as h,a as $,b as j,r as l,c as y,j as r,B as k,f as v}from"./ind
   @media (max-width: 480px) {
     padding: 1.5rem;
   }
-`,B=o.h1`
+`,S=o.h1`
   font-size: 1.75rem;
   color: ${({theme:e})=>e.textBlack};
   text-align: center;
   margin-bottom: 2rem;
   font-weight: 600;
-`,z=o.form`
+`,E=o.form`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-`,d=o.div`
+`,p=o.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   position: relative;
-`,c=o.label`
+`,g=o.label`
   font-size: 0.875rem;
   font-weight: 500;
   color: ${({theme:e})=>e.textBlack};
-`,m=o.input`
+`,x=o.input`
   width: 100%;
   padding: 0.75rem 1rem;
   border: 1.6px solid ${({theme:e})=>e.textGray};
@@ -78,7 +78,7 @@ import{d as o,N as h,a as $,b as j,r as l,c as y,j as r,B as k,f as v}from"./ind
   color: ${({theme:e})=>e.red};
   font-size: 0.75rem;
   margin-top: 0.25rem;
-`;const L=o.button`
+`;const z=o.button`
   width: 100%;
   padding: 0.875rem;
   background-color: ${({theme:e})=>e.greenMain};
@@ -102,12 +102,12 @@ import{d as o,N as h,a as $,b as j,r as l,c as y,j as r,B as k,f as v}from"./ind
     opacity: 0.7;
     cursor: not-allowed;
   }
-`,F=o.p`
+`,D=o.p`
   text-align: center;
   margin-top: 1.5rem;
   color: ${({theme:e})=>e.textGray};
   font-size: 0.875rem;
-`,I=o(h)`
+`,I=o(b)`
   color: ${({theme:e})=>e.greenMain};
   text-decoration: none;
   font-weight: 500;
@@ -117,21 +117,21 @@ import{d as o,N as h,a as $,b as j,r as l,c as y,j as r,B as k,f as v}from"./ind
     color: ${({theme:e})=>e.darkGreen};
     text-decoration: underline;
   }
-`,S=o.div`
+`,L=o.div`
   padding: 0;
   margin-top: 0.5rem;
   font-size: 0.75rem;
   color: ${({theme:e})=>e.textGray};
-`,E=o.p`
+`,q=o.p`
   display: flex;
   align-items: center;
   
   svg {
-    color: ${({isValid:e,theme:n})=>e?n.greenMain:n.textGray};
+    color: ${({isValid:e,theme:s})=>e?s.greenMain:s.textGray};
   }
-`,q=o.div`
+`,P=o.div`
   color: ${({theme:e})=>e.red};
-`,P=o.button`
+`,R=o.button`
   position: absolute;
   top: 50%;
   right: 10px;
@@ -145,15 +145,15 @@ import{d as o,N as h,a as $,b as j,r as l,c as y,j as r,B as k,f as v}from"./ind
   &:focus {
     outline: none;
   }
-`,R=o.header`
+`,T=o.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   background-color:  ${({theme:e})=>e.ContainerBGColor};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-`,T=o(h)`
+`,M=o(b)`
   font-size: 24px;
   font-weight: bold;
   color:  ${({theme:e})=>e.greenMain};
-`,M=()=>{const e=$(),{error:n,isLoading:p}=j(t=>t.auth),[x,g]=l.useState(!1),[a,u]=l.useState({username:"",email:"",password:""});l.useEffect(()=>{n&&e(y())},[e]);const i=t=>{const{name:s,value:f}=t.target;u(w=>({...w,[s]:f}))},b=t=>{t.preventDefault(),e(v(a)).then(()=>{}).catch(s=>{console.error("Реєстрація не вдалася: ",s)})};return r.jsxs(r.Fragment,{children:[r.jsxs(R,{children:[r.jsx(T,{to:"/",children:"Coach's Sketch"}),r.jsx(k,{})]}),r.jsx(G,{children:r.jsxs(C,{children:[r.jsx(B,{children:"Реєстрація"}),r.jsxs(z,{onSubmit:b,children:[r.jsxs(d,{children:[r.jsx(c,{htmlFor:"name",children:"Ім'я"}),r.jsx(m,{id:"name",name:"username",type:"text",value:a.name,onChange:i,minLength:3,maxLength:25,placeholder:"Введіть ім'я",required:!0})]}),r.jsxs(d,{children:[r.jsx(c,{htmlFor:"email",children:"Email"}),r.jsx(m,{id:"email",name:"email",type:"email",value:a.email,onChange:i,maxLength:40,placeholder:"Введіть Email",required:!0})]}),r.jsxs(d,{children:[r.jsx(c,{htmlFor:"password",children:"Пароль"}),r.jsxs("div",{style:{position:"relative"},children:[r.jsx(m,{id:"password",name:"password",type:x?"text":"password",value:a.password,onChange:i,placeholder:"Введіть пароль",required:!0,minLength:6,maxLength:20}),r.jsx(P,{type:"button",onClick:()=>g(t=>!t),children:x?"Сховати":"Показати"})]}),r.jsx(S,{children:r.jsx(E,{children:"Мінімум 6 символів"})})]}),r.jsx(L,{type:"submit",disabled:p,children:p?"Завантаження...":"Зареєструватися"}),n&&r.jsxs(q,{children:[" ",n]})]}),r.jsxs(F,{children:["Вже маєте акаунт? ",r.jsx(I,{to:"/login",children:"Увійти"})]})]})})]})};export{M as default};
+`,U=()=>{const e=v(),{error:s,isLoading:h}=y(t=>t.auth),[u,w]=d.useState(!1),[l,f]=d.useState({username:"",email:"",password:""});d.useEffect(()=>{s&&e(k())},[e]),d.useEffect(()=>{const t=localStorage.getItem("registerFormData");let n="",i="";if(t){const a=JSON.parse(t);console.log(a),n=a.savedEmail||"",i=a.savedUsername||""}(i||n)&&f(a=>({...a,email:n,username:i}))},[]);const c=t=>{const{name:n,value:i}=t.target;f(a=>{const m={...a,[n]:i};if(n==="email"||n==="username"){const j={savedEmail:m.email,savedUsername:m.username};localStorage.setItem("registerFormData",JSON.stringify(j))}return m})},$=t=>{t.preventDefault(),e(C(l)).then(()=>{}).catch(n=>{console.error("Реєстрація не вдалася: ",n)})};return r.jsxs(r.Fragment,{children:[r.jsxs(T,{children:[r.jsx(M,{to:"/",children:"Coach's Sketch"}),r.jsx(G,{})]}),r.jsx(F,{children:r.jsxs(B,{children:[r.jsx(S,{children:"Реєстрація"}),r.jsxs(E,{onSubmit:$,children:[r.jsxs(p,{children:[r.jsx(g,{htmlFor:"name",children:"Ім'я"}),r.jsx(x,{id:"name",name:"username",type:"text",value:l.username,onChange:c,minLength:3,maxLength:25,placeholder:"Введіть ім'я",required:!0})]}),r.jsxs(p,{children:[r.jsx(g,{htmlFor:"email",children:"Email"}),r.jsx(x,{id:"email",name:"email",type:"email",value:l.email,onChange:c,maxLength:40,placeholder:"Введіть Email",required:!0})]}),r.jsxs(p,{children:[r.jsx(g,{htmlFor:"password",children:"Пароль"}),r.jsxs("div",{style:{position:"relative"},children:[r.jsx(x,{id:"password",name:"password",type:u?"text":"password",value:l.password,onChange:c,placeholder:"Введіть пароль",required:!0,minLength:6,maxLength:20}),r.jsx(R,{type:"button",onClick:()=>w(t=>!t),children:u?"Сховати":"Показати"})]}),r.jsx(L,{children:r.jsx(q,{children:"Мінімум 6 символів"})})]}),r.jsx(z,{type:"submit",disabled:h,children:h?"Завантаження...":"Зареєструватися"}),s&&r.jsxs(P,{children:[" ",s]})]}),r.jsxs(D,{children:["Вже маєте акаунт? ",r.jsx(I,{to:"/login",children:"Увійти"})]})]})})]})};export{U as default};
