@@ -37,8 +37,24 @@ const LoginPage = () => {
     if (error) {dispatch(clearError());}
   }, [dispatch]);
   
+  useEffect(() => {
+    
+  const savedEmail = localStorage.getItem('loginFormData') || '';
+  if (savedEmail) {
+    setFormData((prevState) => ({
+      ...prevState,
+      email: savedEmail,
+    }));
+  }
+  }, []);
+  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log("a")
+    if (name === "email") {
+      localStorage.setItem('loginFormData', value);
+    }
     setFormData((prevState) => ({
       ...prevState,
       [name]: value,

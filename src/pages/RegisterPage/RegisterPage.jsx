@@ -37,21 +37,57 @@ const RegisterPage = () => {
     if (error) {dispatch(clearError());}
   }, [dispatch]);
   
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
+  useEffect(() => {
+    
+    const savedFormData = localStorage.getItem('registerFormData');
+
+    let savedEmail = '';
+    let savedUsername = '';
+
+    if (savedFormData) {
+      const parsedData = JSON.parse(savedFormData);
+      console.log(parsedData)
+      savedEmail = parsedData.savedEmail || '';
+      savedUsername = parsedData.savedUsername || '';
+    }
+    if (savedUsername || savedEmail) {
+      setFormData((prevState) => ({
+        ...prevState,
+        email: savedEmail,
+        username: savedUsername,
+      }));
+    }
+  }, []);
+
+
+const handleChange = (e) => {
+  const { name, value } = e.target;
+
+  
+  setFormData((prevState) => {
+    const updatedFormData = {
       ...prevState,
       [name]: value
-    }));
-  };
+    };
+
+    if (name === "email" || name === "username") {
+      const savedFormData = {
+        savedEmail: updatedFormData.email,
+        savedUsername: updatedFormData.username
+      };
+      localStorage.setItem('registerFormData', JSON.stringify(savedFormData));
+    }
+
+    return updatedFormData;
+  });
+};
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Викликаємо action для реєстрації
     dispatch(fetchAuthorizationUser(formData))
       .then(() => {
-        // Дії після успішної реєстрації (можна перенаправити, наприклад)
+        
       })
       .catch((err) => {
         console.error("Реєстрація не вдалася: ", err);
@@ -75,7 +111,7 @@ const RegisterPage = () => {
               id="name" 
               name="username" 
               type="text" 
-              value={formData.name} 
+              value={formData.username} 
               onChange={handleChange}
               minLength={3}
               maxLength={25}
