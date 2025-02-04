@@ -1,4 +1,4 @@
-import{d as r,N as n,j as o,B as a}from"./index-7717be91.js";const i=r.div`
+import{d as o,N as n,j as r}from"./index-c3bdf53e.js";import{H as i}from"./HeaderForUnlogged-82d209a8.js";const a=o.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +10,7 @@ import{d as r,N as n,j as o,B as a}from"./index-7717be91.js";const i=r.div`
   @media (max-width: 640px) {
     padding: 40px; 
   }
-`,s=r.div`
+`,s=o.div`
   text-align: center;
   max-width: 1200px;
   width: 100%;
@@ -18,13 +18,13 @@ import{d as r,N as n,j as o,B as a}from"./index-7717be91.js";const i=r.div`
   background-color: ${({theme:e})=>e.ContainerBGColor};
   border-radius: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-`,c=r.h1`
+`,d=o.h1`
   font-size: clamp(2rem, 5vw, 3.5rem);
   color: ${({theme:e})=>e.textBlack};
   margin-bottom: 1rem;
   font-weight: bold;
   transition: color 0.2s ease-in-out;
-`,d=r.p`
+`,c=o.p`
   font-size: clamp(1rem, 2vw, 1.25rem);
   color: ${({theme:e})=>e.textGray};
   margin-bottom: 2.5rem;
@@ -33,13 +33,13 @@ import{d as r,N as n,j as o,B as a}from"./index-7717be91.js";const i=r.div`
   margin-right: auto;
   line-height: 1.6;
   transition: color 0.2s ease-in-out;
-`,l=r.div`
+`,l=o.div`
   display: flex;
   gap: 1.5rem;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 2rem;
-`,t=r(n)`
+`,t=o(n)`
   padding: 0.875rem 2.5rem;
   border-radius: 0.5rem;
   font-size: 1.125rem;
@@ -73,18 +73,7 @@ import{d as r,N as n,j as o,B as a}from"./index-7717be91.js";const i=r.div`
     text-align: center;
     padding: 1rem 2rem;
   }
-`,m=r.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color:  ${({theme:e})=>e.ContainerBGColor};
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-`,g=r(n)`
-  font-size: 24px;
-  font-weight: bold;
-  color:  ${({theme:e})=>e.greenMain};
-`;r.div`
+`;o.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,8 +85,8 @@ import{d as r,N as n,j as o,B as a}from"./index-7717be91.js";const i=r.div`
   &:hover {
     transform: scale(1.2) ${({$isDarkMode:e})=>e?"rotate(180deg)":"rotate(0deg)"};
   }
-`;r.button`
+`;o.button`
   background: none;
   border: none;
   cursor: pointer;
-`;const p=()=>o.jsxs(o.Fragment,{children:[o.jsxs(m,{children:[o.jsx(g,{to:"/",children:"Coach's Sketch"}),o.jsx(a,{})]}),o.jsx(i,{children:o.jsxs(s,{children:[o.jsx(c,{children:"Ласкаво просимо!"}),o.jsx(d,{children:"Приєднуйтесь до нашої спільноти та відкривайте для себе нові можливості. Почніть свою подорож прямо зараз!"}),o.jsxs(l,{children:[o.jsx(t,{to:"/login",className:"secondary",children:"Увійти"}),o.jsx(t,{to:"/register",className:"primary",children:"Реєстрація"})]})]})})]});export{p as default};
+`;const x=()=>r.jsxs(r.Fragment,{children:[r.jsx(i,{}),r.jsx(a,{children:r.jsxs(s,{children:[r.jsx(d,{children:"Ласкаво просимо!"}),r.jsx(c,{children:"Приєднуйтесь до нашої спільноти та відкривайте для себе нові можливості. Почніть свою подорож прямо зараз!"}),r.jsxs(l,{children:[r.jsx(t,{to:"/login",className:"secondary",children:"Увійти"}),r.jsx(t,{to:"/register",className:"primary",children:"Реєстрація"})]})]})})]});export{x as default};
