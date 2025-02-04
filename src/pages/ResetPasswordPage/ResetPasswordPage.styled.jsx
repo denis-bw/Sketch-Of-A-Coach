@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
   display: flex;
@@ -10,7 +9,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.mainBGColor};
   transition: all 0.2s ease-in-out;
   @media (max-width: 640px) {
-    padding-top: 40px; 
+    padding-top: 40px;
   }
 `;
 
@@ -21,7 +20,7 @@ export const FormCard = styled.div`
   border-radius: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 2rem;
-  
+
   @media (max-width: 480px) {
     padding: 1.5rem;
   }
@@ -62,40 +61,19 @@ export const Input = styled.input`
   background-color: ${({ theme }) => theme.ContainerBGColor};
   color: ${({ theme }) => theme.textBlack};
   transition: all 0.2s ease-in-out;
-  
-&:focus {
+
+  &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.lightGreen};
     box-shadow: 0 0 0 2px ${({ theme }) => `rgba(${parseInt(theme.lightGreen.slice(1, 3), 16)}, ${parseInt(theme.lightGreen.slice(3, 5), 16)}, ${parseInt(theme.lightGreen.slice(5, 7), 16)}, 0.5)`};
-}
+  }
 
-&::placeholder {
+  &::placeholder {
     color: ${({ theme }) => theme.textGray};
-}
-
-&:-webkit-autofill,
-&:-webkit-autofill:hover,
-&:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 30px ${({ theme }) => theme.ContainerBGColor} inset;
-  -webkit-text-fill-color: ${({ theme }) => theme.textBlack};
-  transition: background-color 5000s ease-in-out 0s;
-  border-color: ${({ theme }) => theme.lightGreen};
-}
-
-&:valid {
-    border-color: ${({ theme }) => theme.lightGreen};
-}
-
-&:not(:placeholder-shown):not(:-webkit-autofill):invalid {
-    border-color: ${({ theme }) => theme.red};
-}
-
-&:focus:not(:placeholder-shown):not(:-webkit-autofill):invalid {
-    box-shadow: 0 0 0 2px ${({ theme }) => `rgba(${parseInt(theme.red.slice(1, 3), 16)}, ${parseInt(theme.red.slice(3, 5), 16)}, ${parseInt(theme.red.slice(5, 7), 16)}, 0.5)`};
-}
+  }
 `;
 
-export const LoginButton = styled.button`
+export const SubmitButton = styled.button`
   width: 100%;
   padding: 0.875rem;
   background-color: ${({ theme }) => theme.greenMain};
@@ -110,7 +88,7 @@ export const LoginButton = styled.button`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 0.5rem;
+  margin-top: 16px;
 
   &:hover {
     background-color: ${({ theme }) => theme.darkGreen};
@@ -122,40 +100,34 @@ export const LoginButton = styled.button`
   }
 `;
 
-export const BottomText = styled.p`
-  text-align: center;
-  margin-top: 1.5rem;
-  color: ${({ theme }) => theme.textGray};
-  font-size: 0.875rem;
-`;
-
-export const StyledLink = styled(NavLink)`
-  color: ${({ theme }) => theme.greenMain};
-  text-decoration: none;
-  font-weight: 500;
-  margin-left: 0.5rem;
-  
-  &:hover {
-    color: ${({ theme }) => theme.darkGreen};
-    text-decoration: underline;
-  }
-`;
-
-export const ForgotPassword = styled(NavLink)`
-  color: ${({ theme }) => theme.textGray};
-  text-decoration: none;
-  font-size: 0.875rem;
-  text-align: right;
-  margin-top: -1rem;
-  display: block;
-  
-  &:hover {
-    color: ${({ theme }) => theme.greenMain};
-  }
-`;
 
 export const ErrorText = styled.div`
   color: ${({ theme }) => theme.red};
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+`;
+
+export const Description = styled.p`
+  color: ${({ theme }) => theme.textGray};
+  text-align: center;
+  font-size: 0.875rem;
+  margin-top: -1.5rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+`;
+
+
+export const PasswordRequirement = styled.div`
+  padding: 0;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: ${({ theme }) => theme.textGray};
+`;
+
+export const RequirementItem = styled.p`
+  display: flex;
+  align-items: center;
+  
 `;
 
 export const TogglePasswordButton = styled.button`
@@ -173,3 +145,4 @@ export const TogglePasswordButton = styled.button`
     outline: none;
   }
 `;
+

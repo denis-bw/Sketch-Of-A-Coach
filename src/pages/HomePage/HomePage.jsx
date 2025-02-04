@@ -6,18 +6,13 @@ import {
   Description,
   ButtonsContainer,
   StyledLink,
-  Logo,
-  Header
 } from './HomePage.styled';
-import BtnTheme from '../../components/BtnTheme/BtnTheme';
+import HeaderForUnlogged from '../../components/HeaderForUnlogged/HeaderForUnlogged';
 
 const HomePage = () => {
   return (
     <>
-      <Header>
-        <Logo to={"/"}>Coach's Sketch</Logo> 
-        <BtnTheme/>
-      </Header>
+    <HeaderForUnlogged/>
     
     <Container>
       <Content>

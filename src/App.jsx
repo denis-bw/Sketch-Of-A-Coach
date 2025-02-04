@@ -34,6 +34,8 @@ const ErrorPage = lazy(() => import('pages/ErrorPage/ErrorPage'));
 const  RegisterPage  = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+const ForgotPassword = lazy(() => import('pages/ForgotPassword/ForgotPassword'));
+const ResetPasswordPage = lazy(() => import('pages/ResetPasswordPage/ResetPasswordPage'));
 
 import RestrictedRoute from './components/RestrictedRoute.jsx'
 import PrivateRoute from './components/PrivateRoute.jsx'; 
@@ -57,8 +59,9 @@ function App() {
       <Route path="/" index element={<RestrictedRoute redirectTo="/my-account" component={< HomePage />} />} />
       <Route path="/register" element={<RestrictedRoute redirectTo="/my-account" component={<RegisterPage />} />} />
       <Route path="/login" element={<RestrictedRoute redirectTo="/my-account" component={<LoginPage />} />} />
-      
-      
+      <Route path="/forgot-password" element={<RestrictedRoute redirectTo="/my-account" component={<ForgotPassword />} />} />
+      <Route path="/reset-password" element={<RestrictedRoute redirectTo="/my-account" component={< ResetPasswordPage />} />} />
+       
       <Route path="/" element={<PrivateRoute redirectTo="/login" component={<SharedLayout/>} />} >  
         <Route path="my-account" element={<MyAccount />} />
 

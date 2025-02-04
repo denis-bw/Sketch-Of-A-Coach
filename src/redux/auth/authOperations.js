@@ -17,7 +17,7 @@ export const fetchAuthorizationUser = createAsyncThunk(
   'userDetails/fetchAuthorizationUser',
   async (dataUser, thunkApi) => {
       try {
-      const { data } = await axios.post('/users/register', dataUser);
+      const { data } = await axios.post('users/register', dataUser);
       token.setToken(data.token); 
       return data;
     } catch (err) {
@@ -42,7 +42,7 @@ export const fetchLoginUser = createAsyncThunk(
   'userDetails/fetchLoginUser',
   async (dataUser, thunkApi) => {
     try {   
-      const { data } = await axios.post('/users/login', dataUser);
+      const { data } = await axios.post('users/login', dataUser);
       token.setToken(data.token);
       return data;
     } catch (err) { 
@@ -71,7 +71,7 @@ export const fetchLoginUser = createAsyncThunk(
 export const fetchLogout = createAsyncThunk('userDetails/fetchLogIn',
     async (_, thunkApi) => {
         try {   
-            await axios.post('/users/logout');
+            await axios.post('users/logout');
             token.unsetToken();
         } catch (err) {  
                 if (err.response) {
@@ -99,13 +99,74 @@ export const refreshUser = createAsyncThunk(
 
     try {
       token.setToken(auth.token);
-      const res = await axios.get('/users/current');
+      const res = await axios.get('users/current');
       return res.data;
     } catch (error) {
       if (error.response && error.response.status === 401) {
         return thunkApi.rejectWithValue('Час сеансу закінчився. Будь ласка, увійдіть ще раз.');
       }
       return thunkApi.rejectWithValue(error.message);  
+    }
+  }
+);
+
+
+export const fetchForgotPassword = createAsyncThunk(
+  'userDetails/fetchForgotPassword',
+  async (email, thunkApi) => {
+    try {
+      const { data } = await axios.post('users/forgot-password', { email });
+      return {
+        message: data.message || 'Інструкції для відновлення пароля відправлені на вашу пошту'
+      };
+    } catch (err) {
+      if (!err.response) {
+        return thunkApi.rejectWithValue('Сервер не відповідає. Спробуйте пізніше.');
+      }
+
+      const status = err.response.status;
+      if (status === 404) {
+        return thunkApi.rejectWithValue('Користувача з таким email не знайдено.');
+      }
+      if (status === 400) {
+        return thunkApi.rejectWithValue(err.response.data.error || 'Некоректний email.');
+      }
+      
+      return thunkApi.rejectWithValue('Щось пішло не так. Спробуйте ще раз.');
+    }
+  }
+);
+
+
+
+
+
+export const fetchResetPassword = createAsyncThunk(
+  'auth/resetPassword',
+  async ({ email, token, newPassword }, thunkApi) => {
+    try {
+      const { data } = await axios.post("users/reset-password" , 
+        { email, token, newPassword }
+      );
+      return {
+        message: data.message || 'Пароль успішно змінено.'
+      };
+    } catch (err) {
+      if (!err.response) {
+        return thunkApi.rejectWithValue('Сервер не відповідає. Спробуйте пізніше.');
+      }
+      console.log(err.response)
+      const status = err.response.status;
+      if (status === 404) {
+        return thunkApi.rejectWithValue('Користувача з таким email не знайдено.');
+      }
+      if (status === 400) {
+        return thunkApi.rejectWithValue(err.response.data.message || 'Некоректний email чи токен.');
+      }
+      if (status === 410) {
+        return thunkApi.rejectWithValue('Час посилання відновлення пароля закінчився.');
+      }
+      return thunkApi.rejectWithValue('Щось пішло не так. Спробуйте ще раз.');
     }
   }
 );

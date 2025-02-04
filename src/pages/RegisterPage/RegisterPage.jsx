@@ -16,10 +16,8 @@ import {
   RequirementItem,
   ErrorText,
   TogglePasswordButton,
-  Header,
-  Logo,
 } from './RegisterPage.styled';
-import BtnTheme from '../../components/BtnTheme/BtnTheme';
+import HeaderForUnlogged from '../../components/HeaderForUnlogged/HeaderForUnlogged';
 import { clearError } from '../../redux/auth/authSlice'; 
 
 const RegisterPage = () => {
@@ -96,10 +94,7 @@ const handleChange = (e) => {
 
   return (
     <>
-      <Header>
-        <Logo to={"/"}>Coach's Sketch</Logo> 
-        <BtnTheme/>
-      </Header>
+    <HeaderForUnlogged/>
 
     <Container>
       <FormCard>
@@ -147,7 +142,7 @@ const handleChange = (e) => {
                 placeholder="Введіть пароль"
                 required
                 minLength={6}  
-                maxLength={20}
+                maxLength={25}
               />
               <TogglePasswordButton type="button" onClick={() => setShowPassword(prev => !prev)}>
                 {showPassword ? 'Сховати' : 'Показати'}

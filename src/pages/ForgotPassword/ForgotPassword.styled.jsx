@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
   display: flex;
@@ -63,39 +62,39 @@ export const Input = styled.input`
   color: ${({ theme }) => theme.textBlack};
   transition: all 0.2s ease-in-out;
   
-&:focus {
+  &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.lightGreen};
     box-shadow: 0 0 0 2px ${({ theme }) => `rgba(${parseInt(theme.lightGreen.slice(1, 3), 16)}, ${parseInt(theme.lightGreen.slice(3, 5), 16)}, ${parseInt(theme.lightGreen.slice(5, 7), 16)}, 0.5)`};
-}
+  }
 
-&::placeholder {
+  &::placeholder {
     color: ${({ theme }) => theme.textGray};
-}
+  }
 
-&:-webkit-autofill,
-&:-webkit-autofill:hover,
-&:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 30px ${({ theme }) => theme.ContainerBGColor} inset;
-  -webkit-text-fill-color: ${({ theme }) => theme.textBlack};
-  transition: background-color 5000s ease-in-out 0s;
-  border-color: ${({ theme }) => theme.lightGreen};
-}
-
-&:valid {
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px ${({ theme }) => theme.ContainerBGColor} inset;
+    -webkit-text-fill-color: ${({ theme }) => theme.textBlack};
+    transition: background-color 5000s ease-in-out 0s;
     border-color: ${({ theme }) => theme.lightGreen};
-}
+  }
 
-&:not(:placeholder-shown):not(:-webkit-autofill):invalid {
+  &:valid {
+    border-color: ${({ theme }) => theme.lightGreen};
+  }
+
+  &:not(:placeholder-shown):not(:-webkit-autofill):invalid {
     border-color: ${({ theme }) => theme.red};
-}
+  }
 
-&:focus:not(:placeholder-shown):not(:-webkit-autofill):invalid {
+  &:focus:not(:placeholder-shown):not(:-webkit-autofill):invalid {
     box-shadow: 0 0 0 2px ${({ theme }) => `rgba(${parseInt(theme.red.slice(1, 3), 16)}, ${parseInt(theme.red.slice(3, 5), 16)}, ${parseInt(theme.red.slice(5, 7), 16)}, 0.5)`};
-}
+  }
 `;
 
-export const LoginButton = styled.button`
+export const SubmitButton = styled.button`
   width: 100%;
   padding: 0.875rem;
   background-color: ${({ theme }) => theme.greenMain};
@@ -110,7 +109,6 @@ export const LoginButton = styled.button`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 0.5rem;
 
   &:hover {
     background-color: ${({ theme }) => theme.darkGreen};
@@ -122,54 +120,45 @@ export const LoginButton = styled.button`
   }
 `;
 
-export const BottomText = styled.p`
-  text-align: center;
-  margin-top: 1.5rem;
-  color: ${({ theme }) => theme.textGray};
-  font-size: 0.875rem;
-`;
-
-export const StyledLink = styled(NavLink)`
+export const BackButton = styled.button`
+  width: 100%;
+  padding: 0.875rem;
+  background-color: transparent;
   color: ${({ theme }) => theme.greenMain};
-  text-decoration: none;
+  border: 1.6px solid ${({ theme }) => theme.greenMain};
+  border-radius: 0.5rem;
+  font-size: 1rem;
   font-weight: 500;
-  margin-left: 0.5rem;
-  
-  &:hover {
-    color: ${({ theme }) => theme.darkGreen};
-    text-decoration: underline;
-  }
-`;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.2rem;
 
-export const ForgotPassword = styled(NavLink)`
-  color: ${({ theme }) => theme.textGray};
-  text-decoration: none;
-  font-size: 0.875rem;
-  text-align: right;
-  margin-top: -1rem;
-  display: block;
-  
-  &:hover {
-    color: ${({ theme }) => theme.greenMain};
-  }
+    background-color: transparent;
+    color: ${({ theme }) => theme.textBlack};
+    border: 2px solid ${({ theme }) => theme.greenMain};
+
+    &:hover {
+        background-color: ${({ theme }) => theme.BgActiveLink};
+        border-color: ${({ theme }) => theme.BgActiveLink};
+        color: ${({ theme }) => theme.white};
+    }
 `;
 
 export const ErrorText = styled.div`
   color: ${({ theme }) => theme.red};
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
 `;
 
-export const TogglePasswordButton = styled.button`
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  background: transparent;
-  border: none;
-  font-size: 14px;
-  color: ${({ theme }) => theme.iconColor};
-  cursor: pointer;
-
-  &:focus {
-    outline: none;
-  }
+export const Description = styled.p`
+  color: ${({ theme }) => theme.textGray};
+  text-align: center;
+  font-size: 0.875rem;
+  margin-top: -1.5rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
 `;

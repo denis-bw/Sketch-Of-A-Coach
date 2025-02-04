@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchAuthorizationUser,fetchLoginUser, fetchLogout, refreshUser } from './authOperations.js';
+import { fetchAuthorizationUser,fetchLoginUser, fetchLogout, refreshUser, fetchForgotPassword, fetchResetPassword } from './authOperations.js';
 
 const initialState = {
   user: { email: null, username: null },
@@ -7,6 +7,7 @@ const initialState = {
   isLoading: false,
   isLoggedIn: false,
   error: null,
+  successMessage: null,
 };
 
 const authSlice = createSlice({
@@ -15,6 +16,9 @@ const authSlice = createSlice({
   reducers: {
   clearError: (state) => {
       state.error = null; 
+    },
+  clearMessage: (state) => {
+      state.successMessage = null; 
   },
   },
   extraReducers: (builder) => builder
@@ -60,7 +64,6 @@ const authSlice = createSlice({
       state.isLoading = false;
     })
     .addCase(fetchLogout.rejected, (state, action) => {
-      console.log(action)
       state.error = action.payload || 'Сталася непередбачена помилка при виході.';
       state.isLoading = false;
       state.isLoggedIn = false;
@@ -81,8 +84,35 @@ const authSlice = createSlice({
       state.user = { email: null, username: null };
       state.error = action.payload || 'Не вдалося оновити дані користувача.';
       state.isLoading = false;
+    })
+    .addCase(fetchForgotPassword.pending, (state) => {
+      state.error = null;
+      state.isLoading = true;
+      state.successMessage = null; 
+    })
+    .addCase(fetchForgotPassword.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.successMessage = action.payload.message;
+    })
+    .addCase(fetchForgotPassword.rejected, (state, action) => {
+      state.error = action.payload || 'Не вдалося надіслати запит.';
+      state.isLoading = false;
+    })
+    .addCase(fetchResetPassword.pending, (state) => {
+      state.error = null;
+      state.isLoading = true;
+      state.successMessage = null; 
+    })
+    .addCase(fetchResetPassword.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.successMessage = action.payload.message;
+    })
+    .addCase(fetchResetPassword.rejected, (state, action) => {
+      state.error = action.payload || 'Не вдалося надіслати запит.';
+      state.isLoading = false;
     }),
 });
 
 export const authReducer = authSlice.reducer;
-export const { clearError } = authSlice.actions;
+export const { clearError, clearMessage } = authSlice.actions;
+

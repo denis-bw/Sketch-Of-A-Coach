@@ -17,10 +17,9 @@ import {
   ForgotPassword,
   TogglePasswordButton,
   ErrorText,
-  Header,
-  Logo,
 } from './LoginPage.styled';
-import BtnTheme from '../../components/BtnTheme/BtnTheme';
+
+import HeaderForUnlogged from '../../components/HeaderForUnlogged/HeaderForUnlogged';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -71,10 +70,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <Header>
-        <Logo to="/">Coach's Sketch</Logo>
-        <BtnTheme />
-      </Header>
+      <HeaderForUnlogged/>
 
       <Container>
         <FormCard>
