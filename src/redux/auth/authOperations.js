@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+const BASE_URL = import.meta.env.VITE_BASE_URL_AUTH;
 axios.defaults.baseURL = BASE_URL
 
 const token = {
@@ -99,7 +99,10 @@ export const refreshUser = createAsyncThunk(
 
     try {
       token.setToken(auth.token);
-      const res = await axios.get('users/current');
+      const res = await axios.get('users/current', {
+      headers: {
+        'Cache-Control': 'no-cache', 
+      },});
       return res.data;
     } catch (error) {
       if (error.response && error.response.status === 401) {

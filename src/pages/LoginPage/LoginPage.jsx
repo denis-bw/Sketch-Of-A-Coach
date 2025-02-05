@@ -2,6 +2,7 @@ import React, { useState, useEffect  } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLoginUser } from '../../redux/auth/authOperations';
 import { clearError } from '../../redux/auth/authSlice'; 
+import GoogleAuthButton from './GoogleAuthButton/GoogleAuthButton';
 
 import {
   Container,
@@ -116,10 +117,9 @@ const LoginPage = () => {
             <LoginButton type="submit" disabled={isLoading}>
               {isLoading ? 'Завантаження...' : 'Увійти'}
             </LoginButton>
-
-            {error && <ErrorText>{error}</ErrorText>}
           </Form>
-
+          <GoogleAuthButton/>
+          {error && <ErrorText>{error}</ErrorText>}
           <BottomText>
             Немає акаунту? <StyledLink to="/register">Зареєструватися</StyledLink>
           </BottomText>
