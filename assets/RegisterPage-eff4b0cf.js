@@ -1,15 +1,15 @@
-import{d as r,N as u,a as $,b as k,r as a,c as j,j as o,e as v}from"./index-c3bdf53e.js";import{H as y}from"./HeaderForUnlogged-82d209a8.js";const G=r.div`
+import{d as o,N as v,a as j,b as y,r as d,c as k,j as r,f as G}from"./index-7f78446c.js";import{H as F}from"./HeaderForUnlogged-a073d375.js";const C=o.div`
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  padding-top: 60px;
+  padding-top: 40px;
   background-color: ${({theme:e})=>e.mainBGColor};
   transition: all 0.2s ease-in-out;
   @media (max-width: 640px) {
-    padding-top: 40px; 
+    padding: 20px; 
   }
-`,C=r.div`
+`,E=o.div`
   width: 100%;
   max-width: 28rem;
   background-color: ${({theme:e})=>e.ContainerBGColor};
@@ -20,25 +20,26 @@ import{d as r,N as u,a as $,b as k,r as a,c as j,j as o,e as v}from"./index-c3bd
   @media (max-width: 480px) {
     padding: 1.5rem;
   }
-`,B=r.h1`
+`,S=o.h1`
   font-size: 1.75rem;
   color: ${({theme:e})=>e.textBlack};
   text-align: center;
   margin-bottom: 2rem;
   font-weight: 600;
-`,F=r.form`
+`,D=o.form`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-`,g=r.div`
+`,p=o.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-`,x=r.label`
+  position: relative;
+`,g=o.label`
   font-size: 0.875rem;
   font-weight: 500;
   color: ${({theme:e})=>e.textBlack};
-`,h=r.input`
+`,u=o.input`
   width: 100%;
   padding: 0.75rem 1rem;
   border: 1.6px solid ${({theme:e})=>e.textGray};
@@ -58,13 +59,8 @@ import{d as r,N as u,a as $,b as k,r as a,c as j,j as o,e as v}from"./index-c3bd
     color: ${({theme:e})=>e.textGray};
 }
 
-&:-webkit-autofill,
-&:-webkit-autofill:hover,
-&:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 30px ${({theme:e})=>e.ContainerBGColor} inset;
-  -webkit-text-fill-color: ${({theme:e})=>e.textBlack};
-  transition: background-color 5000s ease-in-out 0s;
-  border-color: ${({theme:e})=>e.lightGreen};
+&:-webkit-autofill {
+    border-color: ${({theme:e})=>e.lightGreen};
 }
 
 &:valid {
@@ -78,7 +74,11 @@ import{d as r,N as u,a as $,b as k,r as a,c as j,j as o,e as v}from"./index-c3bd
 &:focus:not(:placeholder-shown):not(:-webkit-autofill):invalid {
     box-shadow: 0 0 0 2px ${({theme:e})=>`rgba(${parseInt(e.red.slice(1,3),16)}, ${parseInt(e.red.slice(3,5),16)}, ${parseInt(e.red.slice(5,7),16)}, 0.5)`};
 }
-`,L=r.button`
+`;o.span`
+  color: ${({theme:e})=>e.red};
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+`;const I=o.button`
   width: 100%;
   padding: 0.875rem;
   background-color: ${({theme:e})=>e.greenMain};
@@ -93,7 +93,6 @@ import{d as r,N as u,a as $,b as k,r as a,c as j,j as o,e as v}from"./index-c3bd
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 0.5rem;
 
   &:hover {
     background-color: ${({theme:e})=>e.darkGreen};
@@ -103,12 +102,12 @@ import{d as r,N as u,a as $,b as k,r as a,c as j,j as o,e as v}from"./index-c3bd
     opacity: 0.7;
     cursor: not-allowed;
   }
-`,I=r.p`
+`,z=o.p`
   text-align: center;
   margin-top: 1.5rem;
   color: ${({theme:e})=>e.textGray};
   font-size: 0.875rem;
-`,S=r(u)`
+`,B=o(v)`
   color: ${({theme:e})=>e.greenMain};
   text-decoration: none;
   font-weight: 500;
@@ -118,20 +117,21 @@ import{d as r,N as u,a as $,b as k,r as a,c as j,j as o,e as v}from"./index-c3bd
     color: ${({theme:e})=>e.darkGreen};
     text-decoration: underline;
   }
-`,E=r(u)`
+`,L=o.div`
+  padding: 0;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
   color: ${({theme:e})=>e.textGray};
-  text-decoration: none;
-  font-size: 0.875rem;
-  text-align: right;
-  margin-top: -1rem;
-  display: block;
+`,q=o.p`
+  display: flex;
+  align-items: center;
   
-  &:hover {
-    color: ${({theme:e})=>e.greenMain};
+  svg {
+    color: ${({isValid:e,theme:s})=>e?s.greenMain:s.textGray};
   }
-`,z=r.div`
+`,P=o.div`
   color: ${({theme:e})=>e.red};
-`,D=r.button`
+`,R=o.button`
   position: absolute;
   top: 50%;
   right: 10px;
@@ -145,4 +145,4 @@ import{d as r,N as u,a as $,b as k,r as a,c as j,j as o,e as v}from"./index-c3bd
   &:focus {
     outline: none;
   }
-`,M=()=>{const e=$(),{error:i,isLoading:l}=k(t=>t.auth),[d,f]=a.useState(!1),[s,c]=a.useState({email:"",password:""});a.useEffect(()=>{i&&e(j())},[e]),a.useEffect(()=>{const t=localStorage.getItem("loginFormData")||"";t&&c(n=>({...n,email:t}))},[]);const m=t=>{const{name:n,value:p}=t.target;console.log("a"),n==="email"&&localStorage.setItem("loginFormData",p),c(w=>({...w,[n]:p}))},b=t=>{t.preventDefault(),e(v(s)).catch(n=>{console.error("Помилка входу: ",n)})};return o.jsxs(o.Fragment,{children:[o.jsx(y,{}),o.jsx(G,{children:o.jsxs(C,{children:[o.jsx(B,{children:"Вхід"}),o.jsxs(F,{onSubmit:b,children:[o.jsxs(g,{children:[o.jsx(x,{htmlFor:"email",children:"Email"}),o.jsx(h,{id:"email",name:"email",type:"email",value:s.email,onChange:m,maxLength:40,placeholder:"Введіть email",required:!0})]}),o.jsxs(g,{children:[o.jsx(x,{htmlFor:"password",children:"Пароль"}),o.jsxs("div",{style:{position:"relative"},children:[o.jsx(h,{id:"password",name:"password",type:d?"text":"password",value:s.password,onChange:m,placeholder:"Введіть пароль",required:!0,minLength:6,maxLength:20}),o.jsx(D,{type:"button",onClick:()=>f(t=>!t),children:d?"Сховати":"Показати"})]})]}),o.jsx(E,{to:"/forgot-password",children:"Забули пароль?"}),o.jsx(L,{type:"submit",disabled:l,children:l?"Завантаження...":"Увійти"}),i&&o.jsx(z,{children:i})]}),o.jsxs(I,{children:["Немає акаунту? ",o.jsx(S,{to:"/register",children:"Зареєструватися"})]})]})})]})};export{M as default};
+`,T=()=>{const e=j(),{error:s,isLoading:x}=y(t=>t.auth),[h,b]=d.useState(!1),[l,f]=d.useState({username:"",email:"",password:""});d.useEffect(()=>{s&&e(k())},[e]),d.useEffect(()=>{const t=localStorage.getItem("registerFormData");let n="",i="";if(t){const a=JSON.parse(t);console.log(a),n=a.savedEmail||"",i=a.savedUsername||""}(i||n)&&f(a=>({...a,email:n,username:i}))},[]);const c=t=>{const{name:n,value:i}=t.target;f(a=>{const m={...a,[n]:i};if(n==="email"||n==="username"){const $={savedEmail:m.email,savedUsername:m.username};localStorage.setItem("registerFormData",JSON.stringify($))}return m})},w=t=>{t.preventDefault(),e(G(l)).then(()=>{}).catch(n=>{console.error("Реєстрація не вдалася: ",n)})};return r.jsxs(r.Fragment,{children:[r.jsx(F,{}),r.jsx(C,{children:r.jsxs(E,{children:[r.jsx(S,{children:"Реєстрація"}),r.jsxs(D,{onSubmit:w,children:[r.jsxs(p,{children:[r.jsx(g,{htmlFor:"name",children:"Ім'я"}),r.jsx(u,{id:"name",name:"username",type:"text",value:l.username,onChange:c,minLength:3,maxLength:25,placeholder:"Введіть ім'я",required:!0})]}),r.jsxs(p,{children:[r.jsx(g,{htmlFor:"email",children:"Email"}),r.jsx(u,{id:"email",name:"email",type:"email",value:l.email,onChange:c,maxLength:40,placeholder:"Введіть Email",required:!0})]}),r.jsxs(p,{children:[r.jsx(g,{htmlFor:"password",children:"Пароль"}),r.jsxs("div",{style:{position:"relative"},children:[r.jsx(u,{id:"password",name:"password",type:h?"text":"password",value:l.password,onChange:c,placeholder:"Введіть пароль",required:!0,minLength:6,maxLength:25}),r.jsx(R,{type:"button",onClick:()=>b(t=>!t),children:h?"Сховати":"Показати"})]}),r.jsx(L,{children:r.jsx(q,{children:"Мінімум 6 символів"})})]}),r.jsx(I,{type:"submit",disabled:x,children:x?"Завантаження...":"Зареєструватися"}),s&&r.jsxs(P,{children:[" ",s]})]}),r.jsxs(z,{children:["Вже маєте акаунт? ",r.jsx(B,{to:"/login",children:"Увійти"})]})]})})]})};export{T as default};
