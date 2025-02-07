@@ -9,7 +9,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.mainBGColor};
   transition: all 0.2s ease-in-out;
   @media (max-width: 640px) {
-    padding-top: 40px; 
+    padding-top: 50px; 
   }
 `;
 

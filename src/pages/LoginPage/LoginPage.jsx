@@ -18,6 +18,7 @@ import {
   ForgotPassword,
   TogglePasswordButton,
   ErrorText,
+  ForgotPasswordWrapper,
 } from './LoginPage.styled';
 
 import HeaderForUnlogged from '../../components/HeaderForUnlogged/HeaderForUnlogged';
@@ -112,7 +113,7 @@ const LoginPage = () => {
               </div>
             </FormGroup>
 
-            <ForgotPassword to="/forgot-password">Забули пароль?</ForgotPassword>
+             <ForgotPasswordWrapper> <ForgotPassword to="/forgot-password">Забули пароль?</ForgotPassword> </ForgotPasswordWrapper> 
 
             <LoginButton type="submit" disabled={isLoading}>
               {isLoading ? 'Завантаження...' : 'Увійти'}

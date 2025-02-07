@@ -141,18 +141,29 @@ export const StyledLink = styled(NavLink)`
   }
 `;
 
+
+export const ForgotPasswordWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end; 
+  width: 100%;
+  &:hover {
+    color: ${({ theme }) => theme.darkGreen};
+    text-decoration: underline;
+  }
+`;
+
 export const ForgotPassword = styled(NavLink)`
   color: ${({ theme }) => theme.textGray};
   text-decoration: none;
   font-size: 0.875rem;
-  text-align: right;
   margin-top: -1rem;
-  display: block;
+  width: fit-content;
   
   &:hover {
     color: ${({ theme }) => theme.greenMain};
   }
 `;
+
 
 export const ErrorText = styled.div`
   color: ${({ theme }) => theme.red};

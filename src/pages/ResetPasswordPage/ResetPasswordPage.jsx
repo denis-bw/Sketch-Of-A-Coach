@@ -14,7 +14,8 @@ import {
     Description,
     PasswordRequirement,
     RequirementItem,
-    TogglePasswordButton
+    TogglePasswordButton,
+    LinkToLoginPahe
 } from './ResetPasswordPage.styled';
 
 import { fetchResetPassword } from '../../redux/auth/authOperations';
@@ -131,7 +132,7 @@ const ResetPasswordPage = () => {
                 <SubmitButton type="submit" disabled={isLoading}>
                 {isLoading ? 'Завантаження...' : 'Створити пароль'}
                 </SubmitButton>
-
+                <LinkToLoginPahe to="/login">Прейти до Login</LinkToLoginPahe>
             </Form>
             </FormCard>
         </Container>

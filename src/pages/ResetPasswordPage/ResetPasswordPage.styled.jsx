@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
   display: flex;
@@ -146,3 +147,15 @@ export const TogglePasswordButton = styled.button`
   }
 `;
 
+export const LinkToLoginPahe = styled(NavLink)`
+  color: ${({ theme }) => theme.greenMain};
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 0.5rem;
+  
+  &:hover {
+    color: ${({ theme }) => theme.darkGreen};
+    text-decoration: underline;
+  }
+`
