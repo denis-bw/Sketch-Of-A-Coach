@@ -10,7 +10,8 @@ import Loader from '../Loader/Loader';
 const SharedLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
+  const [title, setTitle] = useState("TEXT");
+  
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -22,7 +23,7 @@ const SharedLayout = () => {
   }, []);
 
   const toggleSidebar = () => setIsSidebarOpen(prevState => !prevState);
-
+  
   return (
     <LayoutContainer>
       {(isMobile && isSidebarOpen) || !isMobile ? (
@@ -30,13 +31,14 @@ const SharedLayout = () => {
       ) : null}
 
       <ContentContainer>
-        <Header
+        <Header 
+          title={title} 
           toggleSidebar={toggleSidebar}
           isMobile={isMobile}
         />
         <MainContent>
           <Suspense fallback={<Loader />}>
-            <Outlet />
+            <Outlet context={{ setTitle }}  />
           </Suspense>
         </MainContent>
       </ContentContainer>

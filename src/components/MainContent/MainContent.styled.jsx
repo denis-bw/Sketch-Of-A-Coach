@@ -2,11 +2,16 @@ import styled from 'styled-components';
 
 export const MainContentContainer = styled.main`
   flex: 1;
-  margin: 2rem;
+  margin-left: 2rem;
+  margin-bottom: 16px;
+  margin-right: 10px;
+  margin-top: 16px;
   background-color: ${(p) => p.theme.ContainerBGColor};
   border-radius: 0.5rem;
   overflow: auto;
   @media (max-width: 768px) {
-    margin: 16px;
+    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 8px;
   }
 `;

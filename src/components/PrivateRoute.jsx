@@ -1,15 +1,21 @@
-
 import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { selectIsLoggedIn } from '../redux/auth/authSelectors.js';
+import { useEffect } from 'react';
 
 const PrivateRoute = ({ component: Component, redirectTo = '/login' }) => {
+    const location = useLocation();
     const isLoggedIn = useSelector(selectIsLoggedIn);
-    if (isLoggedIn) {
-      localStorage.removeItem('registerFormData');
-      localStorage.removeItem('loginFormData');
-    } 
-    return !isLoggedIn ? <Navigate to={redirectTo}/> : Component ;
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            localStorage.removeItem('registerFormData');
+            localStorage.removeItem('loginFormData');
+            localStorage.setItem('lastPrivatePath', location.pathname);
+        }
+    }, [location, isLoggedIn]);
+
+    return !isLoggedIn ? <Navigate to={redirectTo}/> : Component;
 };
 
 export default PrivateRoute;

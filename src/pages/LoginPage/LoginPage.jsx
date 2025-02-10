@@ -52,7 +52,6 @@ const LoginPage = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log("a")
     if (name === "email") {
       localStorage.setItem('loginFormData', value);
     }

@@ -1,8 +1,17 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+import { useOutletContext } from "react-router-dom";
+import { useEffect } from 'react'
 
 const TeamsList = () => {
 
+    const { setTitle } = useOutletContext();
+    
+      useEffect(() => {
+        setTitle("Список команд");
+      }, [setTitle]);
+    
+  
 const teamsData = [
   { id: 1, name: 'Team A' },
   { id: 2, name: 'Team B' },

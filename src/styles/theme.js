@@ -15,6 +15,7 @@ export const lightTheme = {
   BgActiveLink: "#97DFC0",
   BgActiveLinkHover: "#67BC8E", 
   iconColor: "#343434",
+  disabledBG: "rgba(52, 52, 52, 0.1)", 
 };
 
 export const darkTheme = {
@@ -34,4 +35,5 @@ export const darkTheme = {
   BgActiveLink: "#212121", 
   BgActiveLinkHover: "#141414", 
   iconColor: "#ffffff",
+  disabledBG: "rgba(255, 255, 255, 0.2)", 
 };

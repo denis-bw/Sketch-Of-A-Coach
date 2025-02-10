@@ -31,13 +31,13 @@ export const HeaderContainer = styled.header`
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   width: 100%;
-  padding: 30px 56px 0px 56px;
+  padding: 20px 56px 0px 56px;
   gap: 10px;
   @media (max-width: 768px) {
     grid-template-columns: auto auto;
     grid-template-rows: auto auto; 
     gap: 5px;
-    padding: 20px 18px 0px 18px;
+    padding: 16px 18px 0px 18px;
   }
 `;
 

@@ -88,23 +88,3 @@ export const StyledLink = styled(NavLink)`
   }
 `;
 
-
-export const ThemeIcon = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${(p) => p.theme.textBlack};
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform: ${({ $isDarkMode }) => ($isDarkMode ? 'rotate(180deg)' : 'rotate(0deg)')};
-  opacity: ${({ $isDarkMode }) => ($isDarkMode ? 1 : 0.8)};
-
-  &:hover {
-    transform: scale(1.2) ${({ $isDarkMode }) => ($isDarkMode ? 'rotate(180deg)' : 'rotate(0deg)')};
-  }
-`;
-
-export const ToggleButton = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-`;

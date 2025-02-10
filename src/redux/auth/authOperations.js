@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// const BASE_URL = import.meta.env.VITE_BASE_URL_AUTH;
-const BASE_URL = "https://coaching-draft-backend.onrender.com/api/auth/"
+const BASE_URL = import.meta.env.VITE_BASE_URL_AUTH;
+// const BASE_URL = "https://coaching-draft-backend.onrender.com/api/auth/"
 axios.defaults.baseURL = BASE_URL
 
 const token = {

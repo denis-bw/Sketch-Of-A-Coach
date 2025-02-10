@@ -7,23 +7,26 @@ import {
   TexeName,
   MenuIcon
 } from './Header.styled';
+import profilePlaceholder from "../../assets/PlaceholderProfile.jpg"
 import BtnTheme from '../BtnTheme/BtnTheme';
 import { ReactComponent as SettingsIcon } from '../../assets/SettingsIcon.svg';
+import { useSelector } from 'react-redux';
 
-const Header = ({ toggleSidebar, isMobile }) => {
-  
+const Header = ({ toggleSidebar, isMobile, title }) => {
+  const { user } = useSelector((state) => state.auth);
+
   return (
     <HeaderContainer>
       {isMobile && (
         <>
           <BurgerButton onClick={toggleSidebar}><MenuIcon  /></BurgerButton>
-          <Title>TEXTФ ФФФафіваф івафіваів</Title>
+          <Title>{title}</Title>
           <ContanerSettings>
             <SettingsIcon style={{ width: '20px', height: '20px' }}  />
             <BtnTheme/>
-            <TexeName>Nadiia</TexeName>
+            <TexeName>{user.username || "User"}</TexeName>
             <img
-              src="/api/placeholder/32/32"
+              src={profilePlaceholder}
               alt="User"
               style={{ width: '2rem', height: '2rem', borderRadius: '9999px', borderColor: "#FFF" }}
             />
@@ -32,13 +35,13 @@ const Header = ({ toggleSidebar, isMobile }) => {
       )}
       {!isMobile && (
         <>
-          <Title>TEXTФ ФФФафіваф івафіваів</Title>
+          <Title>{title}</Title>
           <ContanerSettings>
             <SettingsIcon style={{ width: '20px', height: '20px' }}  />
             <BtnTheme/>
-            <TexeName>Nadiia</TexeName>
+            <TexeName>{user.username || "User"}</TexeName>
             <img
-              src="/api/placeholder/32/32"
+              src={profilePlaceholder}
               alt="User"
               style={{ width: '2rem', height: '2rem', borderRadius: '9999px', borderColor: "#FFF" }}
             />

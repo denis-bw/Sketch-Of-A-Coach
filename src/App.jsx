@@ -45,8 +45,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from './redux/auth/authOperations';
 
 function App() {
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { token, isLoggedIn } = useSelector((state) => state.auth); 
+  let lastPrivatePath = "/my-account"
 
   useEffect(() => {
     if (token && !isLoggedIn) {
@@ -54,15 +55,21 @@ function App() {
     }
   }, [dispatch, token, isLoggedIn]);
   
+  if (isLoggedIn) {
+    const storedPath = localStorage.getItem('lastPrivatePath');
+    if (storedPath && storedPath.startsWith('/')) {
+      lastPrivatePath = storedPath;
+    }
+  }
   return (
      <Suspense fallback={<Loader />}>
     <Routes>
       <Route path="/" index element={<RestrictedRoute redirectTo="/my-account" component={< HomePage />} />} />
       <Route path="/register" element={<RestrictedRoute redirectTo="/my-account" component={<RegisterPage />} />} />
-      <Route path="/login" element={<RestrictedRoute redirectTo="/my-account" component={<LoginPage />} />} />
+      <Route path="/login" element={<RestrictedRoute redirectTo={lastPrivatePath} component={<LoginPage />} />} />
       <Route path="/forgot-password" element={<RestrictedRoute redirectTo="/my-account" component={<ForgotPassword />} />} />
       <Route path="/reset-password" element={<RestrictedRoute redirectTo="/my-account" component={< ResetPasswordPage />} />} />
-       <Route path="/g" element={<RestrictedRoute redirectTo="/my-account" component={<VerificationPage />} />} />
+       <Route path="/g" element={<RestrictedRoute redirectTo={lastPrivatePath} component={<VerificationPage />} />} />
         
       <Route path="/" element={<PrivateRoute redirectTo="/login" component={<SharedLayout/>} />} >  
         <Route path="my-account" element={<MyAccount />} />
