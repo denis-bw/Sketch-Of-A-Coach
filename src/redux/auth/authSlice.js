@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchAuthorizationUser,fetchLoginUser, fetchLogout, refreshUser, fetchForgotPassword, fetchResetPassword } from './authOperations.js';
+import { fetchAuthorizationUser,fetchLoginUser, fetchLogout, refreshUser, fetchForgotPassword, fetchResetPassword, updateUserProfile } from './authOperations.js';
 
 const initialState = {
-  user: { email: null, username: null },
+  user: { email: null, username: null, location: null, dateOfBirth: null, imageProfile: null},
   token: null,
   isLoading: false,
   isLoggedIn: false,
@@ -32,6 +32,9 @@ const authSlice = createSlice({
     .addCase(fetchAuthorizationUser.fulfilled, (state, action) => {
       state.user.email = action.payload.email;
       state.user.username = action.payload.username;
+      state.user.location = action.payload.location;
+      state.user.dateOfBirth = action.payload.dateOfBirth;
+      state.user.imageProfile = action.payload.imageProfile;
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.isLoading = false;
@@ -48,6 +51,9 @@ const authSlice = createSlice({
     .addCase(fetchLoginUser.fulfilled, (state, action) => {
       state.user.email = action.payload.email;
       state.user.username = action.payload.username;
+      state.user.location = action.payload.location;
+      state.user.dateOfBirth = action.payload.dateOfBirth;
+      state.user.imageProfile = action.payload.imageProfile;
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.isLoading = false;
@@ -61,7 +67,7 @@ const authSlice = createSlice({
       state.isLoading = true;
     })
     .addCase(fetchLogout.fulfilled, (state) => {
-      state.user = { email: null, username: null };
+      state.user = {  email: null, username: null, location: null, dateOfBirth: null, imageProfile: null };
       state.token = null;
       state.isLoggedIn = false;
       state.isLoading = false;
@@ -78,13 +84,16 @@ const authSlice = createSlice({
     .addCase(refreshUser.fulfilled, (state, action) => {
       state.user.email = action.payload.email;
       state.user.username = action.payload.username;
+      state.user.location = action.payload.location;
+      state.user.dateOfBirth = action.payload.dateOfBirth;
+      state.user.imageProfile = action.payload.imageProfile;
       state.isLoggedIn = true;
       state.isLoading = false;
     })
     .addCase(refreshUser.rejected, (state, action) => {
       state.token = null;
       state.isLoggedIn = false;
-      state.user = { email: null, username: null };
+      state.user = {  email: null, username: null, location: null, dateOfBirth: null, imageProfile: null };
       state.error = action.payload || 'Не вдалося оновити дані користувача.';
       state.isLoading = false;
     })
@@ -113,6 +122,19 @@ const authSlice = createSlice({
     .addCase(fetchResetPassword.rejected, (state, action) => {
       state.error = action.payload || 'Не вдалося надіслати запит.';
       state.isLoading = false;
+    })
+    .addCase(updateUserProfile.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    })
+    .addCase(updateUserProfile.fulfilled, (state, action) => {
+      console.log(action.payload)
+      state.user = { ...state.user, ...action.payload.updatedFields };
+      state.isLoading = false;
+    })
+    .addCase(updateUserProfile.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload.message || 'Failed to update profile';
     }),
 });
 

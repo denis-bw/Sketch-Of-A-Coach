@@ -9,7 +9,7 @@ const breakpoints = {
   desktop: '1024px'
 };
 
-export const Container = styled.div`
+export const Container = styled.form`
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -275,7 +275,7 @@ export const DatePickerSelect = styled.select`
   padding: 6px 12px;
   width: 100px;
   border: 1.6px solid ${({ theme }) => theme.greenMain};
-  border-radius: 12px;
+  border-radius: 6px;
   background: ${({ theme }) => theme.ContainerBGColor};
   color: ${({ theme }) => theme.textBlack};
   cursor: pointer;
@@ -299,25 +299,25 @@ export const CalendarContainer = styled.div`
     width: 100%;
   }
   .react-datepicker__month-container{
-    border-radius: 28px;
+    border-radius: 14px;
   }
   .react-datepicker-popper{
-    border-radius: 28px;
+    border-radius: 14px;
   }
   .react-datepicker {
-    border-radius: 28px;
+    border-radius: 14px;
     border: 3px solid ${({ theme }) => theme.greenMain};
     background-color: ${({ theme }) => theme.ContainerBGColor};
   }
 
   .react-datepicker__header {
     background-color: ${({ theme }) => theme.ContainerBGColor};
-    border-radius: 28px 28px 0 0 ;
+    border-radius: 14px 14px 0 0 ;
     border-bottom: 1px solid ${({ theme }) => theme.greenMain};
     padding-top: 0;
   }
   .react-datepicker__header:not(.react-datepicker__header--has-time-select){
-    border-radius: 28px 28px 0 0 ;
+    border-radius: 14px 14px 0 0 ;
   }
   .react-datepicker__day-name{
     color: ${({ theme }) => theme.textBlack};
@@ -361,3 +361,16 @@ export const CalendarContainer = styled.div`
     display: none;
   }
 `;
+
+
+
+
+
+
+
+
+
+
+
+
+

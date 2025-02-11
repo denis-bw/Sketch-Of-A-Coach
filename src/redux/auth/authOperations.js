@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const BASE_URL = import.meta.env.VITE_BASE_URL_AUTH;
-// const BASE_URL = "https://coaching-draft-backend.onrender.com/api/auth/"
+// const BASE_URL = import.meta.env.VITE_BASE_URL_AUTH;
+const BASE_URL = "https://coaching-draft-backend.onrender.com/api/auth/"
 axios.defaults.baseURL = BASE_URL
 
 const token = {
@@ -171,6 +171,19 @@ export const fetchResetPassword = createAsyncThunk(
         return thunkApi.rejectWithValue('Час посилання відновлення пароля закінчився.');
       }
       return thunkApi.rejectWithValue('Щось пішло не так. Спробуйте ще раз.');
+    }
+  }
+);
+
+
+export const updateUserProfile = createAsyncThunk(
+  'auth/updateUserProfile',
+  async (updatedData, { rejectWithValue }) => {
+    try {
+      const response = await axios.put('users/updateprofile', updatedData); 
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || 'Failed to update profile');
     }
   }
 );

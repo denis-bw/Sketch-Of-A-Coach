@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { getYear, getMonth } from "date-fns";
 import { uk } from "date-fns/locale";
@@ -6,7 +5,7 @@ import {
   StyledDatePicker, 
   DatePickerWrapper, 
   DatePickerSelect,
-  CalendarContainer 
+  CalendarContainer
 } from "./MyAccount.styled"; 
 
 const range = (start, end, step = 1) => {
@@ -17,8 +16,8 @@ const range = (start, end, step = 1) => {
   return arr;
 };
 
-export const CustomDatePicker = () => {
-  const [startDate, setStartDate] = useState(new Date()); 
+export const CustomDatePicker = ({ selectedDate, onDateChange }) => {
+  const [startDate, setStartDate] = useState(selectedDate || ""); 
 
   const years = range(1900, getYear(new Date()));
   const months = [
@@ -26,11 +25,16 @@ export const CustomDatePicker = () => {
     "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"
   ];
 
+  const handleDateChange = (date) => {
+    setStartDate(date);
+    onDateChange(date); 
+  };
+
   return (
     <CalendarContainer>
       <StyledDatePicker
         selected={startDate}
-        onChange={(date) => setStartDate(date)}
+        onChange={handleDateChange}
         dateFormat="dd.MM.yyyy"
         placeholderText="Оберіть дату"
         locale={uk} 

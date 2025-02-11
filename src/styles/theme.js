@@ -6,6 +6,7 @@ export const lightTheme = {
   white: "#ffffff",
   black: "#343434",
   red: "#FB4566",
+  redDark: "#c53030",
 
   textBlack: "#343434",
   textGray: "rgba(52, 52, 52, 0.5)",
@@ -26,6 +27,7 @@ export const darkTheme = {
   white: "#ffffff",
   black: "#343434",
   red: "#FB4566",
+  redDark: "#c53030",
 
   textBlack: "#ffffff",
   textGray: "#e0dede",

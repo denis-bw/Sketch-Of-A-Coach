@@ -17,11 +17,21 @@ import { createTransform } from 'redux-persist';
 const authTransform = createTransform(
   
   (inboundState) => {
-    const { successMessage, isLoading, isLoggedIn, error, ...persistedState } = inboundState;
+    const { successMessage, isLoading, isLoggedIn, error,  user, ...persistedState } = inboundState;
     return persistedState;
   },
   (outboundState) => {
-    return { ...outboundState, successMessage: null, isLoading: false, isLoggedIn: false, error: null };
+    return {
+      ...outboundState, successMessage: null, isLoading: false, isLoggedIn: false, error: null, 
+      user: {
+            ...outboundState.user,
+            email: null,
+            username: null,
+            location: null,
+            dateOfBirth: null,
+            imageProfile: null,
+          },
+     };
   },
   { whitelist: ['auth'] }
 );
