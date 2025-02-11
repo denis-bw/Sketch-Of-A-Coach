@@ -1,0 +1,1 @@
+import{t as i,u,h as f,g,r,w as h,x as l,j as e,z as m}from"./index-277ac649.js";function d(){const o=i(),n=u(),s=new URLSearchParams(o.search).get("token"),a=f(),{isLoggedIn:t}=g(c=>c.auth);return r.useEffect(()=>{s&&a(h(s))},[a,s]),r.useEffect(()=>{s&&!t&&a(l()).unwrap().catch(()=>{n("/login")})},[a,s,t]),e.jsx(e.Fragment,{children:e.jsx(m,{})})}export{d as default};

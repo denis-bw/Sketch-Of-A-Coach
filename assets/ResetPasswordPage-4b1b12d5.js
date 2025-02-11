@@ -1,4 +1,4 @@
-import{e as o,N as S,h as z,q as B,r as n,f as F,i as q,y as w,n as E,j as r,L as R,s as I}from"./index-1729cdf1.js";import{H as M}from"./HeaderForUnlogged-ea446beb.js";const T=o.div`
+import{d as o,k as S,h as z,t as B,r as n,g as F,m as q,y as f,q as E,j as r,L as R,v as I}from"./index-277ac649.js";import{H as M}from"./HeaderForUnlogged-839b8ce6.js";const T=o.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,13 +20,13 @@ import{e as o,N as S,h as z,q as B,r as n,f as F,i as q,y as w,n as E,j as r,L a
   @media (max-width: 480px) {
     padding: 1.5rem;
   }
-`,N=o.h1`
+`,H=o.h1`
   font-size: 1.75rem;
   color: ${({theme:e})=>e.textBlack};
   text-align: center;
   margin-bottom: 2rem;
   font-weight: 600;
-`,H=o.form`
+`,N=o.form`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -127,4 +127,4 @@ import{e as o,N as S,h as z,q as B,r as n,f as F,i as q,y as w,n as E,j as r,L a
     color: ${({theme:e})=>e.darkGreen};
     text-decoration: underline;
   }
-`,W=()=>{const e=z(),$=B(),[d,k]=n.useState(!1),[l,v]=n.useState(!1),m=new URLSearchParams($.search),C=m.get("email"),G=m.get("token"),[s,p]=n.useState(""),[g,h]=n.useState(""),{error:a,successMessage:i,isLoading:u}=F(t=>t.auth);n.useEffect(()=>{a&&e(q())},[e]),n.useEffect(()=>{i&&(w.success(i),e(E()))},[i,e]);const x=t=>{const{name:c,value:f}=t.target;c==="newPassword"?p(f):c==="confirmPassword"&&h(f)},L=async t=>{if(t.preventDefault(),s!==g){w.error("Паролі не співпадають");return}try{await e(I({email:C,token:G,newPassword:s})).unwrap(),p(""),h("")}catch{console.error("Помилка при скиданні паролю:")}};return r.jsxs(r.Fragment,{children:[r.jsx(R,{}),r.jsx(M,{}),r.jsx(T,{children:r.jsxs(D,{children:[r.jsx(N,{children:"Створити новий пароль"}),r.jsx(A,{children:"Введіть новий пароль і підтвердьте його."}),r.jsxs(H,{onSubmit:L,children:[r.jsxs(b,{children:[r.jsx(j,{htmlFor:"newPassword",children:"Новий пароль"}),r.jsxs("div",{style:{position:"relative"},children:[r.jsx(P,{id:"newPassword",name:"newPassword",type:d?"text":"password",value:s,onChange:x,minLength:6,maxLength:25,placeholder:"Пароль",required:!0}),r.jsx(y,{type:"button",onClick:()=>k(t=>!t),children:d?"Сховати":"Показати"})]})]}),r.jsxs(b,{children:[r.jsx(j,{htmlFor:"confirmPassword",children:"Підтвердити пароль"}),r.jsxs("div",{style:{position:"relative"},children:[r.jsx(P,{id:"confirmPassword",name:"confirmPassword",type:l?"text":"password",value:g,minLength:6,maxLength:25,onChange:x,placeholder:"Пароль",required:!0}),r.jsx(y,{type:"button",onClick:()=>v(t=>!t),children:l?"Сховати":"Показати"})]}),r.jsx(J,{children:r.jsx(K,{children:"Мінімум 6 символів"})}),a&&r.jsxs(Y,{children:[" ",a]})]}),r.jsx(U,{type:"submit",disabled:u,children:u?"Завантаження...":"Створити пароль"}),r.jsx(O,{to:"/login",children:"Прейти до Login"})]})]})})]})};export{W as default};
+`,W=()=>{const e=z(),$=B(),[d,k]=n.useState(!1),[l,v]=n.useState(!1),m=new URLSearchParams($.search),C=m.get("email"),G=m.get("token"),[s,p]=n.useState(""),[g,h]=n.useState(""),{error:a,successMessage:i,isLoading:u}=F(t=>t.auth);n.useEffect(()=>{a&&e(q())},[e]),n.useEffect(()=>{i&&(f.success(i),e(E()))},[i,e]);const x=t=>{const{name:c,value:w}=t.target;c==="newPassword"?p(w):c==="confirmPassword"&&h(w)},L=async t=>{if(t.preventDefault(),s!==g){f.error("Паролі не співпадають");return}try{await e(I({email:C,token:G,newPassword:s})).unwrap(),p(""),h("")}catch{console.error("Помилка при скиданні паролю:")}};return r.jsxs(r.Fragment,{children:[r.jsx(R,{}),r.jsx(M,{}),r.jsx(T,{children:r.jsxs(D,{children:[r.jsx(H,{children:"Створити новий пароль"}),r.jsx(A,{children:"Введіть новий пароль і підтвердьте його."}),r.jsxs(N,{onSubmit:L,children:[r.jsxs(b,{children:[r.jsx(j,{htmlFor:"newPassword",children:"Новий пароль"}),r.jsxs("div",{style:{position:"relative"},children:[r.jsx(P,{id:"newPassword",name:"newPassword",type:d?"text":"password",value:s,onChange:x,minLength:6,maxLength:25,placeholder:"Пароль",required:!0}),r.jsx(y,{type:"button",onClick:()=>k(t=>!t),children:d?"Сховати":"Показати"})]})]}),r.jsxs(b,{children:[r.jsx(j,{htmlFor:"confirmPassword",children:"Підтвердити пароль"}),r.jsxs("div",{style:{position:"relative"},children:[r.jsx(P,{id:"confirmPassword",name:"confirmPassword",type:l?"text":"password",value:g,minLength:6,maxLength:25,onChange:x,placeholder:"Пароль",required:!0}),r.jsx(y,{type:"button",onClick:()=>v(t=>!t),children:l?"Сховати":"Показати"})]}),r.jsx(J,{children:r.jsx(K,{children:"Мінімум 6 символів"})}),a&&r.jsxs(Y,{children:[" ",a]})]}),r.jsx(U,{type:"submit",disabled:u,children:u?"Завантаження...":"Створити пароль"}),r.jsx(O,{to:"/login",children:"Прейти до Login"})]})]})})]})};export{W as default};

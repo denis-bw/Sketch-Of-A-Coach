@@ -1,4 +1,4 @@
-import{e as t,j as e}from"./index-1729cdf1.js";import{H as o}from"./HeaderForUnlogged-ea446beb.js";const i=t.div`
+import{d as t,j as e}from"./index-277ac649.js";import{H as o}from"./HeaderForUnlogged-839b8ce6.js";const i=t.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,4 +25,4 @@ import{e as t,j as e}from"./index-1729cdf1.js";import{H as o}from"./HeaderForUnl
     width: 200px;
     max-height: 200px;
   }
-`,x="/coaching-draft/assets/error-b574aa8e.png",d=()=>(localStorage.removeItem("lastPrivatePath"),e.jsxs(a,{children:[e.jsx(o,{}),e.jsxs(i,{children:[e.jsx(s,{children:"Oops 404"}),e.jsx(n,{src:x,alt:"error-img"})]})]}));export{d as default};
+`,x="/coaching-draft/assets/error-b574aa8e.png",c=()=>(localStorage.removeItem("lastPrivatePath"),e.jsxs(a,{children:[e.jsx(o,{}),e.jsxs(i,{children:[e.jsx(s,{children:"Oops 404"}),e.jsx(n,{src:x,alt:"error-img"})]})]}));export{c as default};

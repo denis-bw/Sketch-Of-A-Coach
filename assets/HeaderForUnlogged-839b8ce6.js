@@ -1,4 +1,4 @@
-import{e as n,N as t,j as o,B as s}from"./index-1729cdf1.js";const r=n.header`
+import{d as n,k as t,j as o,B as s}from"./index-277ac649.js";const r=n.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,4 +9,4 @@ import{e as n,N as t,j as o,B as s}from"./index-1729cdf1.js";const r=n.header`
   font-size: 24px;
   font-weight: bold;
   color:  ${({theme:e})=>e.greenMain};
-`,c=()=>o.jsxs(r,{children:[o.jsx(a,{to:"/",children:"Coach's Sketch"}),o.jsx(s,{})]});export{c as H};
+`,i=()=>o.jsxs(r,{children:[o.jsx(a,{to:"/",children:"Coach's Sketch"}),o.jsx(s,{})]});export{i as H};

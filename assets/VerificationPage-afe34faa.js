@@ -1,1 +1,0 @@
-import{q as i,m as u,h as f,f as h,r,t as g,v as m,j as e,w as l}from"./index-1729cdf1.js";function d(){const o=i(),n=u(),s=new URLSearchParams(o.search).get("token"),a=f(),{isLoggedIn:t}=h(c=>c.auth);return r.useEffect(()=>{s&&a(g(s))},[a,s]),r.useEffect(()=>{s&&!t&&a(m()).unwrap().catch(()=>{n("/login")})},[a,s,t]),e.jsx(e.Fragment,{children:e.jsx(l,{})})}export{d as default};
