@@ -1,4 +1,4 @@
-import{d as o,k as v,h as j,g as y,r as d,m as k,j as r,n as G}from"./index-277ac649.js";import{H as F}from"./HeaderForUnlogged-839b8ce6.js";const C=o.div`
+import{d as o,l as v,i as j,h as y,r as d,n as k,j as r,o as G}from"./index-1a28774f.js";import{H as F}from"./HeaderForUnlogged-28dd4982.js";const C=o.div`
   display: flex;
   align-items: center;
   justify-content: center;
