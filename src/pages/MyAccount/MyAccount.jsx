@@ -36,8 +36,57 @@ const MyAccount = () => {
   const [location, setLocation] = useState(user.location || "");
   const [birthdate, setBirthdate] = useState(user.dateOfBirth || "");
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
-
+  const [previewImage, setPreviewImage] = useState(user.avatar || null);
+  
   const [showPrompt, confirmNavigation, cancelNavigation] = useNavigationPrompt(hasUnsavedChanges);
+
+  const MAX_FILE_SIZE = 5 * 1024 * 1024; 
+  const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+
+  useEffect(() => {
+    if (user.avatar) {
+      setPreviewImage(user.avatar);
+    }
+  }, [user.avatar]);
+
+  const validateFile = (file) => {
+    if (!file) return null;
+
+   
+    if (!ALLOWED_FILE_TYPES.includes(file.type)) {
+      toast.error('Дозволені лише зображення (jpeg, jpg, png, webp)', {
+        position: 'top-right',
+        autoClose: 3000,
+      });
+      return null;
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+      toast.error('Розмір файлу не повинен перевищувати 5MB', {
+        position: 'top-right',
+        autoClose: 3000,
+      });
+      return null;
+    }
+
+    return file;
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const validatedFile = validateFile(file);
+      if (!validatedFile) {
+        e.target.value = ''; 
+        return;
+      }
+      
+
+      const previewUrl = URL.createObjectURL(file);
+      setPreviewImage(previewUrl);
+      setHasUnsavedChanges(true);
+    }
+  };
 
   useEffect(() => {
     setTitle("Мій акаунт");
@@ -52,6 +101,15 @@ const MyAccount = () => {
     setHasUnsavedChanges(hasChanges);
   }, [username, location, birthdate, user]);
 
+  useEffect(() => {
+
+    return () => {
+      if (previewImage && previewImage !== user.avatar) {
+        URL.revokeObjectURL(previewImage);
+      }
+    };
+  }, [previewImage, user.avatar]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     
@@ -63,22 +121,40 @@ const MyAccount = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const updatedData = {};
+    const updatedData = new FormData();
 
-    if (username !== user.username) updatedData.username = username || "";  
-    if (location !== user.location) updatedData.location = location || "";  
-    if (birthdate !== user.dateOfBirth) updatedData.dateOfBirth = birthdate || null;  
+    if (username !== user.username) updatedData.append("username", username || "");  
+    if (location !== user.location) updatedData.append("location", location || "");  
+    if (birthdate !== user.dateOfBirth) updatedData.append("dateOfBirth", birthdate || null);  
 
-    if (Object.keys(updatedData).length > 0) {
+    const fileInput = document.getElementById("photo-upload");
+    const file = fileInput.files[0];
+    
+    if (file) {
+      const validatedFile = validateFile(file);
+      if (!validatedFile) {
+        return; 
+      }
+      updatedData.append("avatar", validatedFile);
+    }
+
+    if (updatedData.has("username") || updatedData.has("location") || updatedData.has("dateOfBirth") || updatedData.has("avatar")) {
       try {
         const result = await dispatch(updateUserProfile(updatedData)); 
-
+        
         if (!result.error) {
           setHasUnsavedChanges(false);
           toast.success('Зміни успішно збережено!');
+          
+        
+          if (fileInput) {
+            fileInput.value = '';
+          }
+        } else {
+          throw new Error(result.error);
         }
       } catch (error) {
-        toast.error(`Сталася помилка: ${error.message || error}`, {
+        toast.error(`Помилка при збереженні: ${error.message || 'Щось пішло не так'}`, {
           position: 'top-right',
           autoClose: 3000,
         });
@@ -89,6 +165,10 @@ const MyAccount = () => {
         autoClose: 3000,
       });
     }
+  };
+
+  const handleImageError = (e) => {
+    e.target.src = profilePlaceholder;
   };
 
   return (
@@ -105,8 +185,9 @@ const MyAccount = () => {
             <PhotoWrapper>
               <PhotoCircle>
                 <ProfileImage 
-                  src={profilePlaceholder}
+                  src={previewImage || profilePlaceholder}
                   alt="Фото профілю"
+                  onError={handleImageError}
                 />
               </PhotoCircle>
               <PhotoUploadButton htmlFor="photo-upload">
@@ -115,7 +196,8 @@ const MyAccount = () => {
               <HiddenInput 
                 id="photo-upload" 
                 type="file" 
-                accept="image/*"
+                accept="image/jpeg,image/jpg,image/png,image/webp"
+                onChange={handleFileChange}
               />
             </PhotoWrapper>
           </PhotoContainer>

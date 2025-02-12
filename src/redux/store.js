@@ -29,7 +29,7 @@ const authTransform = createTransform(
             username: null,
             location: null,
             dateOfBirth: null,
-            imageProfile: null,
+            avatar: null,
           },
      };
   },

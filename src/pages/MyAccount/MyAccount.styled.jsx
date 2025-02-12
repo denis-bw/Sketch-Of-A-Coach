@@ -70,7 +70,7 @@ export const PhotoCircle = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.textGray};
+  background-color: ${({ theme }) => theme.white};
   overflow: hidden;
   border: 2px solid ${({ theme }) => theme.borderColor};
 `;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getYear, getMonth } from "date-fns";
+import { getYear, getMonth, setYear, setMonth, isValid } from "date-fns";
 import { uk } from "date-fns/locale";
 import { 
   StyledDatePicker, 
@@ -7,6 +7,7 @@ import {
   DatePickerSelect,
   CalendarContainer
 } from "./MyAccount.styled"; 
+
 
 const range = (start, end, step = 1) => {
   let arr = [];
@@ -17,17 +18,53 @@ const range = (start, end, step = 1) => {
 };
 
 export const CustomDatePicker = ({ selectedDate, onDateChange }) => {
-  const [startDate, setStartDate] = useState(selectedDate || ""); 
+  const currentDate = new Date();
+  const [startDate, setStartDate] = useState(() => {
+    try {
+      if (selectedDate) {
+        const date = new Date(selectedDate);
+        
+        return (isValid(date) && !isNaN(date.getTime()) && date <= currentDate) ? date : null;
+      }
+      return null;
+    } catch (e) {
+      console.error("Invalid date format:", selectedDate);
+      return null;
+    }
+  });
 
-  const years = range(1900, getYear(new Date()));
+  const years = range(1900, getYear(currentDate));
   const months = [
     "Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень",
     "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"
   ];
 
   const handleDateChange = (date) => {
-    setStartDate(date);
-    onDateChange(date); 
+    try {
+      if (date && isValid(date) && !isNaN(date.getTime())) {
+        const isoDate = date.toISOString();
+        setStartDate(date);
+        onDateChange(isoDate);
+      } else {
+        setStartDate(null);
+        onDateChange(null);
+      }
+    } catch (e) {
+      console.error("Error handling date change:", e);
+      setStartDate(null);
+      onDateChange(null);
+    }
+  };
+
+  const handleYearChange = (value) => {
+    const newDate = setYear(startDate, parseInt(value));
+    handleDateChange(newDate);
+  };
+
+  const handleMonthChange = (value) => {
+    const monthIndex = months.indexOf(value);
+    const newDate = setMonth(startDate, monthIndex);
+    handleDateChange(newDate);
   };
 
   return (
@@ -37,20 +74,35 @@ export const CustomDatePicker = ({ selectedDate, onDateChange }) => {
         onChange={handleDateChange}
         dateFormat="dd.MM.yyyy"
         placeholderText="Оберіть дату"
-        locale={uk} 
+        locale={uk}
+        maxDate={currentDate}
         renderCustomHeader={({
           date,
           changeYear,
           changeMonth,
         }) => (
           <DatePickerWrapper>
-            <DatePickerSelect value={getYear(date)} onChange={({ target: { value } }) => changeYear(value)}>
+            <DatePickerSelect 
+              value={getYear(date)} 
+              onChange={(e) => {
+                const value = e.target.value;
+                changeYear(value);
+                handleYearChange(value);
+              }}
+            >
               {years.map((year) => (
                 <option key={year} value={year}>{year}</option>
               ))}
             </DatePickerSelect>
 
-            <DatePickerSelect value={months[getMonth(date)]} onChange={({ target: { value } }) => changeMonth(months.indexOf(value))}>
+            <DatePickerSelect 
+              value={months[getMonth(date)]} 
+              onChange={(e) => {
+                const value = e.target.value;
+                changeMonth(months.indexOf(value));
+                handleMonthChange(value);
+              }}
+            >
               {months.map((month, index) => (
                 <option key={index} value={month}>{month}</option>
               ))}
