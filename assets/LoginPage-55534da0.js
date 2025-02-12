@@ -1,4 +1,4 @@
-import{d as r,j as o,l as m,i as $,h as j,r as a,n as k,q as v}from"./index-1a28774f.js";import{H as G}from"./HeaderForUnlogged-28dd4982.js";const B=r.button`
+import{d as r,j as o,l as m,i as $,h as k,r as a,n as j,q as v}from"./index-f76ad55d.js";import{H as G}from"./HeaderForUnlogged-efe1890e.js";const y=r.button`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -36,7 +36,7 @@ import{d as r,j as o,l as m,i as $,h as j,r as a,n as k,q as v}from"./index-1a28
         width: 20px;
         height: 20px;
     }
-`,y=()=>{const e={}.VITE_BASE_URL_AUTH,i=()=>{window.location.href=`${e}users/google`};return o.jsxs(B,{onClick:i,children:[o.jsxs("svg",{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 48 48",children:[o.jsx("path",{fill:"#EA4335",d:"M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"}),o.jsx("path",{fill:"#4285F4",d:"M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"}),o.jsx("path",{fill:"#FBBC05",d:"M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"}),o.jsx("path",{fill:"#34A853",d:"M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"}),o.jsx("path",{fill:"none",d:"M0 0h48v48H0z"})]}),"Увійти через Google"]})},C=r.div`
+`,B=()=>{const e="https://coaching-draft-backend.onrender.com/api/auth/",i=()=>{window.location.href=`${e}users/google`};return o.jsxs(y,{onClick:i,children:[o.jsxs("svg",{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 48 48",children:[o.jsx("path",{fill:"#EA4335",d:"M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"}),o.jsx("path",{fill:"#4285F4",d:"M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"}),o.jsx("path",{fill:"#FBBC05",d:"M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"}),o.jsx("path",{fill:"#34A853",d:"M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"}),o.jsx("path",{fill:"none",d:"M0 0h48v48H0z"})]}),"Увійти через Google"]})},C=r.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,7 +47,7 @@ import{d as r,j as o,l as m,i as $,h as j,r as a,n as k,q as v}from"./index-1a28
   @media (max-width: 640px) {
     padding-top: 40px; 
   }
-`,L=r.div`
+`,F=r.div`
   width: 100%;
   max-width: 28rem;
   background-color: ${({theme:e})=>e.ContainerBGColor};
@@ -58,7 +58,7 @@ import{d as r,j as o,l as m,i as $,h as j,r as a,n as k,q as v}from"./index-1a28
   @media (max-width: 480px) {
     padding: 1.5rem;
   }
-`,F=r.h1`
+`,L=r.h1`
   font-size: 1.75rem;
   color: ${({theme:e})=>e.textBlack};
   text-align: center;
@@ -68,11 +68,11 @@ import{d as r,j as o,l as m,i as $,h as j,r as a,n as k,q as v}from"./index-1a28
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-`,x=r.div`
+`,h=r.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-`,h=r.label`
+`,x=r.label`
   font-size: 0.875rem;
   font-weight: 500;
   color: ${({theme:e})=>e.textBlack};
@@ -176,7 +176,7 @@ import{d as r,j as o,l as m,i as $,h as j,r as a,n as k,q as v}from"./index-1a28
   }
 `,D=r.div`
   color: ${({theme:e})=>e.red};
-`,H=r.button`
+`,P=r.button`
   position: absolute;
   top: 50%;
   right: 10px;
@@ -190,4 +190,4 @@ import{d as r,j as o,l as m,i as $,h as j,r as a,n as k,q as v}from"./index-1a28
   &:focus {
     outline: none;
   }
-`,U=()=>{const e=$(),{error:i,isLoading:l}=j(t=>t.auth),[c,f]=a.useState(!1),[s,d]=a.useState({email:"",password:""});a.useEffect(()=>{i&&e(k())},[e]),a.useEffect(()=>{const t=localStorage.getItem("loginFormData")||"";t&&d(n=>({...n,email:t}))},[]);const g=t=>{const{name:n,value:p}=t.target;n==="email"&&localStorage.setItem("loginFormData",p),d(w=>({...w,[n]:p}))},b=t=>{t.preventDefault(),e(v(s)).catch(n=>{console.error("Помилка входу: ",n)})};return o.jsxs(o.Fragment,{children:[o.jsx(G,{}),o.jsx(C,{children:o.jsxs(L,{children:[o.jsx(F,{children:"Вхід"}),o.jsxs(z,{onSubmit:b,children:[o.jsxs(x,{children:[o.jsx(h,{htmlFor:"email",children:"Email"}),o.jsx(u,{id:"email",name:"email",type:"email",value:s.email,onChange:g,maxLength:40,placeholder:"Введіть email",required:!0})]}),o.jsxs(x,{children:[o.jsx(h,{htmlFor:"password",children:"Пароль"}),o.jsxs("div",{style:{position:"relative"},children:[o.jsx(u,{id:"password",name:"password",type:c?"text":"password",value:s.password,onChange:g,placeholder:"Введіть пароль",required:!0,minLength:6,maxLength:20}),o.jsx(H,{type:"button",onClick:()=>f(t=>!t),children:c?"Сховати":"Показати"})]})]}),o.jsxs(A,{children:[" ",o.jsx(M,{to:"/forgot-password",children:"Забули пароль?"})," "]}),o.jsx(I,{type:"submit",disabled:l,children:l?"Завантаження...":"Увійти"})]}),o.jsx(y,{}),i&&o.jsx(D,{children:i}),o.jsxs(E,{children:["Немає акаунту? ",o.jsx(S,{to:"/register",children:"Зареєструватися"})]})]})})]})};export{U as default};
+`,q=()=>{const e=$(),{error:i,isLoading:l}=k(t=>t.auth),[c,f]=a.useState(!1),[s,d]=a.useState({email:"",password:""});a.useEffect(()=>{i&&e(j())},[e]),a.useEffect(()=>{const t=localStorage.getItem("loginFormData")||"";t&&d(n=>({...n,email:t}))},[]);const g=t=>{const{name:n,value:p}=t.target;n==="email"&&localStorage.setItem("loginFormData",p),d(w=>({...w,[n]:p}))},b=t=>{t.preventDefault(),e(v(s)).catch(n=>{console.error("Помилка входу: ",n)})};return o.jsxs(o.Fragment,{children:[o.jsx(G,{}),o.jsx(C,{children:o.jsxs(F,{children:[o.jsx(L,{children:"Вхід"}),o.jsxs(z,{onSubmit:b,children:[o.jsxs(h,{children:[o.jsx(x,{htmlFor:"email",children:"Email"}),o.jsx(u,{id:"email",name:"email",type:"email",value:s.email,onChange:g,maxLength:40,placeholder:"Введіть email",required:!0})]}),o.jsxs(h,{children:[o.jsx(x,{htmlFor:"password",children:"Пароль"}),o.jsxs("div",{style:{position:"relative"},children:[o.jsx(u,{id:"password",name:"password",type:c?"text":"password",value:s.password,onChange:g,placeholder:"Введіть пароль",required:!0,minLength:6,maxLength:20}),o.jsx(P,{type:"button",onClick:()=>f(t=>!t),children:c?"Сховати":"Показати"})]})]}),o.jsxs(A,{children:[" ",o.jsx(M,{to:"/forgot-password",children:"Забули пароль?"})," "]}),o.jsx(I,{type:"submit",disabled:l,children:l?"Завантаження...":"Увійти"})]}),o.jsx(B,{}),i&&o.jsx(D,{children:i}),o.jsxs(E,{children:["Немає акаунту? ",o.jsx(S,{to:"/register",children:"Зареєструватися"})]})]})})]})};export{q as default};
