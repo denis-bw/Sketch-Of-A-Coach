@@ -31,8 +31,17 @@ export const NavigationPrompt = ({ isOpen, onConfirm, onCancel }) => {
 
   if (!isOpen) return null;
 
+  const handleConfirm = () => {
+    onConfirm();
+  };
+
+  const handleCancel = (e) => {
+    e.stopPropagation();
+    onCancel();
+  };
+
   return (
-    <ModalOverlay onClick={onCancel}>
+    <ModalOverlay onClick={handleCancel}>
       <ModalContent onClick={e => e.stopPropagation()}>
         <ModalHeader>
           <ModalTitle>Незбережені зміни</ModalTitle>
@@ -41,10 +50,10 @@ export const NavigationPrompt = ({ isOpen, onConfirm, onCancel }) => {
           </ModalDescription>
         </ModalHeader>
         <ModalFooter>
-          <CancelButton onClick={onCancel}>
+          <CancelButton onClick={handleCancel}>
             Залишитись
           </CancelButton>
-          <ConfirmButton onClick={onConfirm}>
+          <ConfirmButton onClick={handleConfirm}>
             Залишити сторінку
           </ConfirmButton>
         </ModalFooter>

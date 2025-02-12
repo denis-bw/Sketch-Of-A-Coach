@@ -37,10 +37,7 @@ const MyAccount = () => {
   const [birthdate, setBirthdate] = useState(user.dateOfBirth || "");
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
 
-  
-  const [showPrompt, confirmNavigation, cancelNavigation] = useNavigationPrompt(
-    hasUnsavedChanges
-  );
+  const [showPrompt, confirmNavigation, cancelNavigation] = useNavigationPrompt(hasUnsavedChanges);
 
   useEffect(() => {
     setTitle("Мій акаунт");
@@ -55,21 +52,9 @@ const MyAccount = () => {
     setHasUnsavedChanges(hasChanges);
   }, [username, location, birthdate, user]);
 
-  useEffect(() => {
-    const handleBeforeUnload = (e) => {
-      if (hasUnsavedChanges) {
-        e.preventDefault();
-        e.returnValue = "У вас є незбережені зміни. Ви впевнені, що хочете залишити сторінку?";
-        return e.returnValue;
-      }
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
-  }, [hasUnsavedChanges]);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
+    
     if (name === "username") setUsername(value);
     if (name === "location") setLocation(value);
     if (name === "birthdate") setBirthdate(value);
@@ -90,10 +75,7 @@ const MyAccount = () => {
 
         if (!result.error) {
           setHasUnsavedChanges(false);
-          toast.success('Зміни успішно збережено!', {
-            position: 'top-right',
-            autoClose: 3000,
-          });
+          toast.success('Зміни успішно збережено!');
         }
       } catch (error) {
         toast.error(`Сталася помилка: ${error.message || error}`, {
@@ -108,7 +90,6 @@ const MyAccount = () => {
       });
     }
   };
-
 
   return (
     <>
